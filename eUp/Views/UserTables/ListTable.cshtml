@@ -26,7 +26,7 @@
             @Html.DisplayFor(modelItem => item.UserId)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.TableName)
+            @Html.ActionLink(item.TableName, "TableDetails", new { id = item.UserTableId })
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.UserTableId }) |

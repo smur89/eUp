@@ -12,7 +12,7 @@ using Microsoft.SqlServer.Management.Common;
 
 namespace eUp.Controllers
 {   
-
+    [Authorize]
     public class UserTablesController : Controller
     {
 
@@ -21,24 +21,19 @@ namespace eUp.Controllers
         //
         // GET: /Tables/
 
-        public ViewResult Index()
+        public ActionResult Index()
         {
-            return View(context.UserTables.Include(table => table.User).Include(table => table.Fields).ToList());
+            return RedirectToAction("ListTable", "UserTables");
+            //return View(context.UserTables.Include(table => table.User).Include(table => table.Fields).ToList());
         }
 
         //
         // POST: /Tables/
-        public ViewResult ListTable(int id)
+        public ViewResult ListTable()
         {
+            System.Web.Security.MembershipUser user = System.Web.Security.Membership.GetUser();
+            int id = (int)user.ProviderUserKey;
             return View(context.UserTables.Where(x => x.UserId == id));
-        }
-
-        public ViewResult CreateTable(int id)
-        {
-
-            ICollection<Field> tableFields = context.Fields.Where(x => x.UserTableId == id).ToList();
-           
-            return View(tableFields);
         }
 
         public ViewResult DbConnect(int id, int tableId)
@@ -48,58 +43,55 @@ namespace eUp.Controllers
              var myServer = new Server(conn);
             var myDatabase = myServer.Databases["UserTablesDb"];
            //var myDatabase =  new Microsoft.SqlServer.Management.Smo.Database(myServer, "UserTablesDb");
-           
+
             try
             {
                 myServer.ConnectionContext.Connect();
-          
-                   /* if (myServer.Databases["UserTablesDb"] != null)
-                    {
-                      myServer.Databases["UserTablesDb"].Drop();
-                    }
-                    myServer.ConnectionContext.Connect();
-                
-                    myDatabase.Create();*/
-                    
-                    try
-                    {
-                        Table uTable = new Table(myDatabase, "User Table_" + id + "_" + tableId); //MUST BE DYNAMIC+UNIQUE
-                        Column col = new Column(uTable, "UserTableId", DataType.Int);
-                        col.Identity = true;
-                        uTable.Columns.Add(col);
 
-                        foreach (var field in tableFields) // names in each table must be unique
-                        {
-                            string name = field.FieldName;
-                            col = new Column(uTable, name, DataType.Text);
-                            uTable.Columns.Add(col);
-                        }
-                        uTable.Create();
-                        myServer.ConnectionContext.Disconnect();
-                    }
-                    catch (Exception e)
+                /* if (myServer.Databases["UserTablesDb"] != null)
+                 {
+                   myServer.Databases["UserTablesDb"].Drop();
+                 }
+                 myServer.ConnectionContext.Connect();
+                
+                 myDatabase.Create();*/
+
+                try
+                {
+                    Table uTable = new Table(myDatabase, "User Table_" + id + "_" + tableId); //MUST BE DYNAMIC+UNIQUE
+                    Column col = new Column(uTable, "UserTableId", DataType.Int);
+                    col.Identity = true;
+                    uTable.Columns.Add(col);
+
+                    foreach (var field in tableFields) // names in each table must be unique
                     {
-                        System.Diagnostics.Debug.WriteLine(e.Message);
-                        System.Diagnostics.Debug.WriteLine(e.InnerException.Message);
-                        System.Diagnostics.Debug.WriteLine(e.InnerException.InnerException.Message);
-                        //return View();
+                        string name = field.FieldName;
+                        col = new Column(uTable, name, DataType.Text);
+                        uTable.Columns.Add(col);
                     }
-                
-            }
-            catch(Exception e)
-            {
-                
+                    uTable.Create();
                     myServer.ConnectionContext.Disconnect();
+                }
+                catch (Exception e)
+                {
                     System.Diagnostics.Debug.WriteLine(e.Message);
+                    System.Diagnostics.Debug.WriteLine(e.InnerException.Message);
+                    System.Diagnostics.Debug.WriteLine(e.InnerException.InnerException.Message);
                     //return View();
+                }
+
             }
-        
+            catch (Exception e)
+            {
+                myServer.ConnectionContext.Disconnect();
+                System.Diagnostics.Debug.WriteLine(e.Message);
+                //return View();
+            }
             return View(tableFields);
         }
 
         //
         // GET: /Tables/Details/5
-
         public ViewResult Details(int id)
         {
             UserTable table = context.UserTables.Single(x => x.UserTableId == id);
@@ -108,7 +100,6 @@ namespace eUp.Controllers
 
         //
         // GET: /Tables/Create
-
         public ActionResult Create()
         {
             ViewBag.PossibleUsers = context.Users;
@@ -117,7 +108,6 @@ namespace eUp.Controllers
 
         //
         // POST: /Tables/Create
-
 
         [HttpPost]
         public ActionResult Create(UserTable table)
@@ -129,7 +119,8 @@ namespace eUp.Controllers
                 table.UserId = id;
                 context.UserTables.Add(table);
                 context.SaveChanges();
-                return RedirectToAction("Index");  
+                //return RedirectToAction("Index");  
+                return RedirectToAction("ListTable", "UserTables", new { id = id });
             }
 
             ViewBag.PossibleUsers = context.Users;

@@ -37,10 +37,7 @@ namespace eUp.Controllers
         {
             if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
             {
-               // eUpDbContext db = new eUpDbContext();
-               // User user = db.Users.Single(u => u.UserName == model.UserName);
-                //return RedirectToLocal(returnUrl);
-                return RedirectToAction("ListTable", "UserTables", new { id= model.UserId });
+                return RedirectToLocal(returnUrl);
             }
 
             // If we got this far, something failed, redisplay form
