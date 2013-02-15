@@ -1,0 +1,12 @@
+@model eUp.Models.UserTable
+
+@* This partial view defines form fields that will appear when creating and editing entities *@
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.TableName)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.TableName)
+    @Html.ValidationMessageFor(model => model.TableName)
+</div>
+

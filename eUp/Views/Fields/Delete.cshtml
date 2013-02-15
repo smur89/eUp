@@ -1,0 +1,26 @@
+@model eUp.Models.Field
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Field</legend>
+
+    <div class="display-label">FieldName</div>
+    <div class="display-field">@Model.FieldName</div>
+
+    <div class="display-label">Table</div>
+    <div class="display-field">@Html.DisplayTextFor(_ => Model.Table).ToString()</div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}
+
+

@@ -1,0 +1,29 @@
+@model eUp.Models.UserTable
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Table</legend>
+
+    <div class="display-label">TableName</div>
+    <div class="display-field">@Model.TableName</div>
+
+    <div class="display-label">Fields</div>
+    <div class="display-field">@(Model.Fields == null ? "None" : Model.Fields.Count.ToString())</div>
+
+    <div class="display-label">User</div>
+    <div class="display-field">@(Model.User == null ? "None" : Model.User.UserName)</div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}
+
+

@@ -1,0 +1,18 @@
+﻿@model IEnumerable<eUp.Models.Field>
+
+@{
+    ViewBag.Title = "CreateTable";
+ }
+
+    <h2>Fields List</h2>
+
+    @foreach (var i in Model)
+    {
+    <tr>
+        <td>
+		    @i.FieldName.ToString();
+        </td>
+
+    </tr>
+     }
+        

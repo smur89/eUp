@@ -1,0 +1,23 @@
+@model eUp.Models.Field
+
+@* This partial view defines form fields that will appear when creating and editing entities *@
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.FieldName)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.FieldName)
+    @Html.ValidationMessageFor(model => model.FieldName)
+</div>  
+
+<div class="editor-label">
+    Table
+</div>
+<div class="editor-field">
+    @Html.DropDownListFor(model => model.UserTableId, ((IEnumerable<eUp.Models.UserTable>)ViewBag.PossibleTables).Select(option => new SelectListItem {
+        Text = Html.DisplayTextFor(_ => option).ToString(), 
+        Value = option.UserTableId.ToString(),
+        Selected = (Model != null) && (option.UserTableId == Model.UserTableId)
+    }), "Choose...")
+    @Html.ValidationMessageFor(model => model.UserTableId)
+</div>

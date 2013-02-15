@@ -1,0 +1,23 @@
+@model eUp.Models.Field
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Field</legend>
+
+    <div class="display-label">FieldName</div>
+    <div class="display-field">@Model.FieldName</div>
+
+    <div class="display-label">Table</div>
+    <div class="display-field">@Html.DisplayTextFor(_ => Model.Table).ToString()</div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.FieldId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+

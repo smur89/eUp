@@ -1,0 +1,26 @@
+@model eUp.Models.UserTable
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Table</legend>
+
+    <div class="display-label">TableName</div>
+    <div class="display-field">@Model.TableName</div>
+
+    <div class="display-label">Fields</div>
+    <div class="display-field">@(Model.Fields == null ? "None" : Model.Fields.Count.ToString())</div>
+
+    <div class="display-label">User</div>
+    <div class="display-field">@(Model.User == null ? "None" : Model.User.UserName)</div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.UserTableId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+
