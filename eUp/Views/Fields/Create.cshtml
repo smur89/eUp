@@ -12,7 +12,7 @@
         <legend>Field</legend>
 
 		@Html.Partial("_CreateOrEdit", Model)
-        @ViewBag.TableId
+        @Model.UserTableId = @ViewBag.TableId
         <p>
             <input type="submit" value="Create" />
         </p>
