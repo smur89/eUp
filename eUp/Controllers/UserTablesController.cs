@@ -90,6 +90,12 @@ namespace eUp.Controllers
             return View(tableFields);
         }
 
+        public ViewResult TableData(int id)
+        {
+            //get data from table
+            return View();
+        }
+
         //
         // GET: /Tables/Details/5
         public ViewResult Details(int id)
@@ -120,7 +126,8 @@ namespace eUp.Controllers
                 context.UserTables.Add(table);
                 context.SaveChanges();
                 //return RedirectToAction("Index");  
-                return RedirectToAction("ListTable", "UserTables", new { id = id });
+               // return RedirectToAction("ListTable", "UserTables", new { id = id });
+                return RedirectToAction("Index", "FieldsController");
             }
 
             ViewBag.PossibleUsers = context.Users;
