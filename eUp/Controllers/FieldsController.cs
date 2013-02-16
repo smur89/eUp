@@ -48,6 +48,7 @@ namespace eUp.Controllers
         {
             if (ModelState.IsValid)
             {
+                field.UserTableId = 16;
                 context.Fields.Add(field);
                 context.SaveChanges();
                 return RedirectToAction("Index");  
