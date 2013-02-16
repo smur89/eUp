@@ -2,7 +2,6 @@
 
 @{
     ViewBag.Title = "Create";
-    ViewBag.Id = ViewBag.Field.UserTableId;
 }
 
 <h2>Add Field</h2>
@@ -13,6 +12,7 @@
         <legend>Field</legend>
 
 		@Html.Partial("_CreateOrEdit", Model)
+        @Html.Hidden("UserTableId", @ViewBag.UserTableId);
         <p>
             <input type="submit" value="Create" />
         </p>
