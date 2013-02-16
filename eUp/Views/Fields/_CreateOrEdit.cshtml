@@ -13,11 +13,3 @@
 <div class="editor-label">
     Table
 </div>
-<div class="editor-field">
-    @Html.DropDownListFor(model => model.UserTableId, ((IEnumerable<eUp.Models.UserTable>)ViewBag.PossibleTables).Select(option => new SelectListItem {
-        Text = Html.DisplayTextFor(_ => option).ToString(), 
-        Value = option.UserTableId.ToString(),
-        Selected = (Model != null) && (option.UserTableId == Model.UserTableId)
-    }), "Choose...")
-    @Html.ValidationMessageFor(model => model.UserTableId)
-</div>

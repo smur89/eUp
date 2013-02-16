@@ -125,9 +125,10 @@ namespace eUp.Controllers
                 table.UserId = id;
                 context.UserTables.Add(table);
                 context.SaveChanges();
+                int tableId = table.UserTableId;
                 //return RedirectToAction("Index");  
                // return RedirectToAction("ListTable", "UserTables", new { id = id });
-                return RedirectToAction("Index", "FieldsController");
+                return RedirectToAction("Create", "Fields", new { id = tableId });
             }
 
             ViewBag.PossibleUsers = context.Users;

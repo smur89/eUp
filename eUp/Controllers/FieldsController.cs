@@ -33,7 +33,7 @@ namespace eUp.Controllers
         //
         // GET: /Fields/Create
 
-        public ActionResult Create()
+        public ActionResult Create(int id)
         {
             ViewBag.PossibleUserTables = context.UserTables;
             return View();
