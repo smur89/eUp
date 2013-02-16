@@ -37,7 +37,9 @@ namespace eUp.Controllers
         {
            // ViewBag.PossibleUserTables = context.UserTables;
             ViewBag.TableId = id;
-            return View();
+            Field f = new Field();
+            f.UserTableId = id;
+            return View(f);
         } 
 
         //
@@ -48,7 +50,8 @@ namespace eUp.Controllers
         {
             if (ModelState.IsValid)
             {
-                field.UserTableId = 16;
+
+               // field.UserTableId = 16;
                 context.Fields.Add(field);
                 context.SaveChanges();
                 return RedirectToAction("Index");  
