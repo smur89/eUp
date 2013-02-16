@@ -35,7 +35,8 @@ namespace eUp.Controllers
 
         public ActionResult Create(int id)
         {
-            ViewBag.PossibleUserTables = context.UserTables;
+           // ViewBag.PossibleUserTables = context.UserTables;
+            ViewBag.TableId = id;
             return View();
         } 
 
