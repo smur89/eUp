@@ -44,12 +44,13 @@ namespace eUp.Controllers
         // POST: /Fields/Create
 
         [HttpPost]
-        public ActionResult Create(Field field) 
+        public ActionResult Create(FormCollection formData) 
         {
+            Field field = new Field();
             if (ModelState.IsValid)
             {
 
-                field.UserTableId = ViewBag.UserTableId;
+                field.UserTableId = formData.Get(ViewBag.UserTableId);
                 context.Fields.Add(field);
                 context.SaveChanges();
                 return RedirectToAction("Index");  
