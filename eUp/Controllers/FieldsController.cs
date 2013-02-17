@@ -44,7 +44,7 @@ namespace eUp.Controllers
         // POST: /Fields/Create
 
         [HttpPost]
-        public ActionResult Create(Field field)
+        public ActionResult Create(Field field) 
         {
             if (ModelState.IsValid)
             {
@@ -54,7 +54,6 @@ namespace eUp.Controllers
                 context.SaveChanges();
                 return RedirectToAction("Index");  
             }
-
             ViewBag.PossibleUserTables = context.UserTables;
             return View(field);
         }
