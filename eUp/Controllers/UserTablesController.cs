@@ -36,7 +36,7 @@ namespace eUp.Controllers
             return View(context.UserTables.Where(x => x.UserId == id));
         }
 
-        public ViewResult DbConnect(int id, int tableId)
+        public ViewResult SaveTable(int id, int tableId)
         {
             ICollection<Field> tableFields = context.Fields.Where(x => x.UserTableId == id).ToList();
             var conn = new ServerConnection(@".\SQLEXPRESS");

@@ -8,5 +8,6 @@
 <div class="editor-field">
     @Html.EditorFor(model => model.FieldName)
     @Html.ValidationMessageFor(model => model.FieldName)
+    @Html.Hidden("UserTableId", Model.UserTableId)
 </div>  
 

@@ -355,7 +355,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\UserTables\CreateTable.cshtml" />
-    <Content Include="Views\UserTables\DbConnect.cshtml" />
+    <Content Include="Views\UserTables\SaveTable.cshtml" />
     <Content Include="Views\UserTables\Exception.cshtml" />
     <Content Include="Views\UserTables\ListTable.cshtml" />
   </ItemGroup>

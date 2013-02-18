@@ -37,23 +37,22 @@ namespace eUp.Controllers
         {
            // ViewBag.PossibleUserTables = context.UserTables;
             ViewBag.UserTableId = id;
-            return View();
+            Field f = new Field();
+            f.UserTableId = id;
+            return View(f);
         } 
 
         //
         // POST: /Fields/Create
 
         [HttpPost]
-        public ActionResult Create(FormCollection formData) 
-        {
-            Field field = new Field();
+        public ActionResult Create(Field field)
+        { 
             if (ModelState.IsValid)
             {
-
-                field.UserTableId = formData.Get(ViewBag.UserTableId);
                 context.Fields.Add(field);
                 context.SaveChanges();
-                return RedirectToAction("Index");  
+                return RedirectToAction("Create");  
             }
             ViewBag.PossibleUserTables = context.UserTables;
             return View(field);
