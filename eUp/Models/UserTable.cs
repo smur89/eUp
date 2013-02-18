@@ -14,6 +14,6 @@ namespace eUp.Models
         public string TableName { get; set; }
         [DisplayName("Field")]
         public virtual ICollection<Field> Fields { get; set; }
-        public virtual User User { get; set; }
+        //public virtual User User { get; set; }
     }
 }

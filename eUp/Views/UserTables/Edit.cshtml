@@ -12,6 +12,7 @@
         <legend>Table</legend>
 
         @Html.HiddenFor(model => model.UserTableId)
+        @Html.HiddenFor(model => model.UserId)
 		@Html.Partial("_CreateOrEdit", Model)
 
         <p>
