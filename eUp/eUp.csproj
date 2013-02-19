@@ -194,6 +194,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\CompModel.cs" />
     <Compile Include="Models\eUpDbContext.cs" />
     <Compile Include="Models\Field.cs" />
     <Compile Include="Models\UserTable.cs" />
@@ -358,6 +359,9 @@
     <Content Include="Views\UserTables\SaveTable.cshtml" />
     <Content Include="Views\UserTables\Exception.cshtml" />
     <Content Include="Views\UserTables\ListTable.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\UserTables\_Edit.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

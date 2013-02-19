@@ -1,0 +1,24 @@
+﻿@model eUp.Models.CompModel
+
+@* This partial view defines form fields that will appear when creating and editing entities *@
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.Table.TableName)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.Table.TableName)
+    @Html.ValidationMessageFor(model => model.Table.TableName)
+
+    @foreach (var field in Model.Fields)
+    {
+    <div class="editor-label">
+    @Html.LabelFor(f => field.FieldName)
+    </div>
+        <div class="editor-field">
+    @Html.EditorFor(f => field.FieldName)
+    @Html.ValidationMessageFor(f => field.FieldName)
+    </div>
+    }
+    
+</div>
+

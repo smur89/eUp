@@ -140,20 +140,29 @@ namespace eUp.Controllers
  
         public ActionResult Edit(int id)
         {
-            UserTable table = context.UserTables.Single(x => x.UserTableId == id);
-            ViewBag.PossibleUsers = context.Users;
-            return View(table);
+            // table = context.UserTables.Single(x => x.UserTableId == id);
+           // return View(context.UserTables.Include(table => table.Fields).Single(table => table.UserTableId == id));
+            UserTable t = context.UserTables.Single(x => x.UserTableId == id);
+            IList<Field> f = context.Fields.Where(y => y.UserTableId == id).ToList();
+            CompModel c = new CompModel();
+            c.Table = t;
+            c.Fields = f;
+            return View(c);
         }
 
         //
         // POST: /Tables/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(UserTable table)
+        public ActionResult Edit(CompModel table)
         {
             if (ModelState.IsValid)
             {
-                context.Entry(table).State = EntityState.Modified;
+                UserTable t = new UserTable();
+                t = table.Table;
+                t.Fields = table.Fields;
+
+                context.Entry(t).State = EntityState.Modified;
                 context.SaveChanges();
                 return RedirectToAction("Index");
             }

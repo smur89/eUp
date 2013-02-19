@@ -1,4 +1,4 @@
-@model eUp.Models.UserTable
+@model eUp.Models.CompModel
 
 @{
     ViewBag.Title = "Edit";
@@ -11,9 +11,9 @@
     <fieldset>
         <legend>Table</legend>
 
-        @Html.HiddenFor(model => model.UserTableId)
-        @Html.HiddenFor(model => model.UserId)
-		@Html.Partial("_CreateOrEdit", Model)
+        @Html.HiddenFor(model => model.Table.UserTableId)
+        @Html.HiddenFor(model => model.Table.UserId)
+		@Html.Partial("_Edit", Model)
 
         <p>
             <input type="submit" value="Save" />
