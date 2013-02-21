@@ -39,10 +39,10 @@ namespace eUp.Controllers
         public ViewResult SaveTable(int id, int tableId)
         {
             ICollection<Field> tableFields = context.Fields.Where(x => x.UserTableId == id).ToList();
-            var conn = new ServerConnection(@".\SQLEXPRESS");
-            var myServer = new Server(conn);
-            var myDatabase = myServer.Databases["UserTablesDb"];
-           //var myDatabase =  new Microsoft.SqlServer.Management.Smo.Database(myServer, "UserTablesDb");
+            ServerConnection conn = new ServerConnection(@".\SQLEXPRESS");
+            Server myServer = new Server(conn);
+           // var myDatabase = myServer.Databases["UserTablesDb"];
+            Microsoft.SqlServer.Management.Smo.Database myDatabase =  new Microsoft.SqlServer.Management.Smo.Database(myServer, "UserTablesDb");
 
             try
             {
@@ -52,9 +52,9 @@ namespace eUp.Controllers
                  {
                    myServer.Databases["UserTablesDb"].Drop();
                  }
-                 myServer.ConnectionContext.Connect();
+                myServer.ConnectionContext.Connect();*/
                 
-                 myDatabase.Create();*/
+                 myDatabase.Create();
 
                 try
                 {
@@ -101,13 +101,13 @@ namespace eUp.Controllers
         // POST: /Tables/FillTable
 
         [HttpPost]
-        public ActionResult FillTable(UserTable table)
+        public ActionResult FillTable(FormCollection table)
         {
             if (ModelState.IsValid)
             {
                 //Submit values to SQL table
             }
-            ViewBag.PossibleUsers = context.Users;
+
             return View(table);
         }
 
