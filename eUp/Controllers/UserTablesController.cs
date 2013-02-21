@@ -94,7 +94,10 @@ namespace eUp.Controllers
         public ViewResult TableData(int id)
         {
             //get data from table
-            return View();
+            //Collection<UserTable> ut = new Collection<UserTable>();
+            //ut.Add(context.UserTables.Include(table => table.Fields).Single(table => table.UserTableId == id));
+            UserTable ut = context.UserTables.Include(table => table.Fields).Single(table => table.UserTableId == id);
+            return View(ut.Fields);
         }
 
         //
@@ -161,6 +164,7 @@ namespace eUp.Controllers
             {
                 int id = int.Parse(table.Get("UserTableId"));
                 UserTable t = context.UserTables.Include(f => f.Fields).Single(f => f.UserTableId == id);
+                ///check if fields null[]
                 t.TableName = table.Get("TableName");
                 string s = table.Get("field.FieldName");
                 string[] fNames = s.Split(',');
@@ -174,7 +178,8 @@ namespace eUp.Controllers
                 return RedirectToAction("ListTable");
             }
             ViewBag.PossibleUsers = context.Users;
-            return View(table);
+           // return View(table);
+            return RedirectToAction("ListTable");
         }
 
         //

@@ -1,0 +1,18 @@
+﻿@model IEnumerable<eUp.Models.Field>
+
+@{
+    ViewBag.Title = "TableData";
+}
+
+<h2>TableData</h2>
+@{
+    var grid = new WebGrid(Model);
+                          
+ }
+
+ 
+<div>
+ @grid.GetHtml();
+</div>
+        
+           
