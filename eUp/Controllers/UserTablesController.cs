@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using eUp.Models;
 using Microsoft.SqlServer.Management.Smo;
 using Microsoft.SqlServer.Management.Common;
+using System.Collections.ObjectModel;
  
 
 namespace eUp.Controllers
@@ -141,30 +142,36 @@ namespace eUp.Controllers
         public ActionResult Edit(int id)
         {
             // table = context.UserTables.Single(x => x.UserTableId == id);
-           // return View(context.UserTables.Include(table => table.Fields).Single(table => table.UserTableId == id));
-            UserTable t = context.UserTables.Single(x => x.UserTableId == id);
+            return View(context.UserTables.Include(table => table.Fields).Single(table => table.UserTableId == id));
+           /* UserTable t = context.UserTables.Single(x => x.UserTableId == id);
             IList<Field> f = context.Fields.Where(y => y.UserTableId == id).ToList();
             CompModel c = new CompModel();
             c.Table = t;
             c.Fields = f;
-            return View(c);
+            return View(c);*/
         }
 
         //
         // POST: /Tables/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(CompModel table)
+        public ActionResult Edit(FormCollection table)
         {
             if (ModelState.IsValid)
             {
-                UserTable t = new UserTable();
-                t = table.Table;
-                t.Fields = table.Fields;
-
+                int id = int.Parse(table.Get("UserTableId"));
+                UserTable t = context.UserTables.Include(f => f.Fields).Single(f => f.UserTableId == id);
+                t.TableName = table.Get("TableName");
+                string s = table.Get("field.FieldName");
+                string[] fNames = s.Split(',');
+                int index = 0;
+                foreach (var n in t.Fields)
+                {
+                    n.FieldName = fNames[index++];
+                }
                 context.Entry(t).State = EntityState.Modified;
                 context.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("ListTable");
             }
             ViewBag.PossibleUsers = context.Users;
             return View(table);
