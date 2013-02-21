@@ -10,7 +10,6 @@ using Microsoft.SqlServer.Management.Smo;
 using Microsoft.SqlServer.Management.Common;
 using System.Collections.ObjectModel;
  
-
 namespace eUp.Controllers
 {   
     [Authorize]
@@ -41,7 +40,7 @@ namespace eUp.Controllers
         {
             ICollection<Field> tableFields = context.Fields.Where(x => x.UserTableId == id).ToList();
             var conn = new ServerConnection(@".\SQLEXPRESS");
-             var myServer = new Server(conn);
+            var myServer = new Server(conn);
             var myDatabase = myServer.Databases["UserTablesDb"];
            //var myDatabase =  new Microsoft.SqlServer.Management.Smo.Database(myServer, "UserTablesDb");
 
@@ -134,7 +133,6 @@ namespace eUp.Controllers
                // return RedirectToAction("ListTable", "UserTables", new { id = id });
                 return RedirectToAction("Create", "Fields", new { id = tableId });
             }
-
             ViewBag.PossibleUsers = context.Users;
             return View(table);
         }
