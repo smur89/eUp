@@ -1,0 +1,39 @@
+﻿@model eUp.Models.UserTable
+
+@{
+    ViewBag.Title = "FillTable";
+}
+
+<h2>@Model.TableName</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>UserTable</legend>
+
+         @foreach (var field in Model.Fields)
+         {
+         <div class="editor-label">
+             @Html.HiddenFor(f => field.FieldId)
+             @Html.LabelFor(f => field.FieldName)
+         </div>
+         <div class="editor-field">
+             @Html.EditorFor(f => field.FieldName)
+             @Html.ValidationMessageFor(f => field.FieldName)
+         </div>
+         }
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

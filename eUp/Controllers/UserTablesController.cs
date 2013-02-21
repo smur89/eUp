@@ -90,6 +90,27 @@ namespace eUp.Controllers
             return View(tableFields);
         }
 
+        //
+        // GET: /Tables/FillTable
+        public ActionResult FillTable(int id)
+        {
+            return View(context.UserTables.Include(table => table.Fields).Single(table => table.UserTableId == id));
+        }
+
+        //
+        // POST: /Tables/FillTable
+
+        [HttpPost]
+        public ActionResult FillTable(UserTable table)
+        {
+            if (ModelState.IsValid)
+            {
+                //Submit values to SQL table
+            }
+            ViewBag.PossibleUsers = context.Users;
+            return View(table);
+        }
+
         public ViewResult TableData(int id)
         {
             //get data from table
