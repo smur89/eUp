@@ -38,7 +38,7 @@ namespace eUp.Controllers
 
         public ViewResult SaveTable(int id, int tableId)
         {
-            ICollection<Field> tableFields = context.Fields.Where(x => x.UserTableId == id).ToList();
+            ICollection<Field> tableFields = context.Fields.Where(x => x.UserTableId == tableId).ToList();
             var conn = new ServerConnection(@".\SQLEXPRESS");
             var myServer = new Server(conn);
             var myDatabase = myServer.Databases["UserTablesDb"];
@@ -90,13 +90,39 @@ namespace eUp.Controllers
             return View(tableFields);
         }
 
-        public ViewResult TableData(int id)
+        public ViewResult TableData(int id, int tableId)
         {
+            ICollection<dynamic> d = new Collection<dynamic>(); 
+            var conn = new ServerConnection(@".\SQLEXPRESS");
+            var myServer = new Server(conn);
+            var myDatabase = myServer.Databases["UserTablesDb"];
+           //var myDatabase =  new Microsoft.SqlServer.Management.Smo.Database(myServer, "UserTablesDb");
+
+            try
+            {
+                myServer.ConnectionContext.Connect();
+                foreach (Table table in myDatabase.Tables)
+                {
+                    System.Diagnostics.Debug.WriteLine(" " + table.Name);
+                    foreach (Column col in table.Columns)
+                    {
+                        System.Diagnostics.Debug.WriteLine("  " + col.Name + " " + col.DataType.Name);
+                        d.Add(col.Name);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e.Message);
+                System.Diagnostics.Debug.WriteLine(e.InnerException.Message);
+                System.Diagnostics.Debug.WriteLine(e.InnerException.InnerException.Message);
+                //return View();
+            }
             //get data from table
             //Collection<UserTable> ut = new Collection<UserTable>();
             //ut.Add(context.UserTables.Include(table => table.Fields).Single(table => table.UserTableId == id));
-            UserTable ut = context.UserTables.Include(table => table.Fields).Single(table => table.UserTableId == id);
-            return View(ut.Fields);
+           // UserTable ut = context.UserTables.Include(table => table.Fields).Single(table => table.UserTableId == id);
+            return View(d);
         }
 
         //
