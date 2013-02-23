@@ -9,6 +9,7 @@ using eUp.Models;
 using Microsoft.SqlServer.Management.Smo;
 using Microsoft.SqlServer.Management.Common;
 using System.Collections.ObjectModel;
+using System.Collections;
  
 namespace eUp.Controllers
 {   
@@ -46,9 +47,10 @@ namespace eUp.Controllers
 
             try
             {
+                /*
                 myServer.ConnectionContext.Connect();
 
-                /* if (myServer.Databases["UserTablesDb"] != null)
+                 if (myServer.Databases["UserTablesDb"] != null)
                  {
                    myServer.Databases["UserTablesDb"].Drop();
                  }
@@ -88,6 +90,62 @@ namespace eUp.Controllers
                 //return View();
             }
             return View(tableFields);
+        }
+
+        //
+        // GET: /Tables/FillTable
+        public ActionResult FillTable(int id, int tableId)
+        {
+            var conn = new ServerConnection(@".\SQLEXPRESS");
+            var myServer = new Server(conn);
+            var myDatabase = myServer.Databases["UserTablesDb"];            
+
+            //Find table in DB with this name
+            var searchName = ("User Table_" + id + "_" + tableId);
+
+            //Get required table
+            Table uTable = new Table();
+            foreach (Table t in myDatabase.Tables)
+            {
+                    if(t.Name == searchName)
+                    {
+                        uTable = t;
+                    }
+            }
+
+            // Add column names from table to List
+            IList colNames = new List<string>();
+            foreach (Column col in uTable.Columns)
+            {
+                colNames.Add(col.Name.ToString());
+            }
+            
+            ViewBag.Columns = colNames;
+
+            
+
+            return View();
+            //return View(context.UserTables.Include(table => table.Fields).Single(table => table.UserTableId == id));
+        }
+
+        //
+        // POST: /Tables/FillTable
+
+        [HttpPost]
+        public ActionResult FillTable(FormCollection form)
+        {
+            if (ModelState.IsValid)
+            {
+                IList listOfValues = new List<string>();
+                for (var i = 0; i < form.Count; i++)
+                {
+                    listOfValues.Add(form[i]);
+                }
+                System.Diagnostics.Debug.Write(listOfValues);
+                //Submit values to SQL table
+            }
+
+            return View();
         }
 
         public ViewResult TableData(int id, int tableId)
