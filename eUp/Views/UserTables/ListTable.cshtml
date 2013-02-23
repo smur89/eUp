@@ -32,7 +32,7 @@
             @Html.ActionLink("Edit", "Edit", new { id=item.UserTableId }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.UserTableId }) |
             @Html.ActionLink("Submit", "SaveTable", new { id=item.UserId, tableId=item.UserTableId }) |
-            @Html.ActionLink("User View", "FillTable", new { id=item.UserTableId }) |
+            @Html.ActionLink("User View", "FillTable", new { id = item.UserId, tableId = item.UserTableId }) |
         </td>
     </tr>
 }
