@@ -114,8 +114,7 @@ namespace eUp.Controllers
             }
 
             // Add column names from table to List
-           // IList colNames = new List<string>();
-            var colNames = new Collection<dynamic>();
+            IList colNames = new List<string>();
             foreach (Column col in uTable.Columns)
             {
                 colNames.Add(col.Name.ToString());
@@ -125,7 +124,7 @@ namespace eUp.Controllers
 
             
 
-            return View(colNames);
+            return View();
             //return View(context.UserTables.Include(table => table.Fields).Single(table => table.UserTableId == id));
         }
 

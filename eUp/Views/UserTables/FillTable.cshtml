@@ -1,5 +1,4 @@
-﻿@model eUp.Models.UserTable
-
+﻿@model ICollection<dynamic>
 
 @{
     ViewBag.Title = "FillTable";
@@ -9,47 +8,29 @@
 
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
-
+    @Html.EditorForModel();
+    @*
     <fieldset>
         <legend>UserTable</legend>
-        @*
-         @foreach (var field in Model.Fields)
+
+         @for (int i = 0; i < Model.Count; i++)
          {
-         <div class="editor-label">
-             @Html.HiddenFor(f => field.FieldId)
-             @Html.LabelFor(f => field.FieldName)
-         </div>
          <div class="editor-field">
-             @Html.EditorFor(f => field.FieldName)
-             @Html.ValidationMessageFor(f => field.FieldName)
-         </div>
-         }*@
-
-         @*@for (var i = 0; i < ViewBag.Columns.Count; i++)
-         {
-             var m = ViewBag.Columns[i].ToString();
-             Html.EditorFor(c => m);
-         }*@
-
-         @foreach (var col in ViewBag.Columns)
-         {
-         <div class="editor-label">
             <p>
-             @{var name = col.ToString();}
-             @name 
-             @*var m = col;
-             @Html.EditorFor(c => m.ToString());*@
+            @Html.Label()
             </p>
-         </div>
-
-         <div class="editor-field">
-         <input type="text" name="@name"/>
+            <p>
+             @Html.Editor(col)
+            </p>
          </div>
          }
         <p>
             <input type="submit" value="Create" />
         </p>
-    </fieldset>
+    </fieldset>*@
+    <p>
+            <input type="submit" value="Create" />
+        </p>
 }
 
 <div>

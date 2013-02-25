@@ -9,5 +9,12 @@
     @Html.EditorFor(model => model.FieldName)
     @Html.ValidationMessageFor(model => model.FieldName)
     @Html.Hidden("UserTableId", Model.UserTableId)
-</div>  
+</div> 
+<div class="editor-field">
+    @Html.DropDownListFor(model => model.FieldType, Model.FieldType.Select(option => new SelectListItem {
+        Text = (option == null ? "None" : option), 
+        Value = option.ToString(),
+        Selected = (Model != null) && (option == Model.FieldName)
+    }), "Choose...")
+</div> 
 
