@@ -17,8 +17,7 @@ namespace eUp
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
-            System.Data.Entity.Database.SetInitializer(
-                new System.Data.Entity.DropCreateDatabaseIfModelChanges<eUp.Models.eUpDbContext>());
+           
 
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

@@ -18,14 +18,15 @@ namespace eUp.Controllers
     {
 
         private eUpDbContext context = new eUpDbContext();
-
+        
         //
         // GET: /Tables/
 
         public ActionResult Index()
         {
-            return RedirectToAction("ListTable", "UserTables");
+           return RedirectToAction("ListTable", "UserTables");
             //return View(context.UserTables.Include(table => table.User).Include(table => table.Fields).ToList());
+            //return View();
         }
 
         //
@@ -42,24 +43,39 @@ namespace eUp.Controllers
             ICollection<Field> tableFields = context.Fields.Where(x => x.UserTableId == tableId).ToList();
             var conn = new ServerConnection(@".\SQLEXPRESS");
             var myServer = new Server(conn);
-            var myDatabase = myServer.Databases["UserTablesDb"];
-           //var myDatabase =  new Microsoft.SqlServer.Management.Smo.Database(myServer, "UserTablesDb");
+           var myDatabase = myServer.Databases["UserTablesDb"];
+            //var myDatabase =  new Microsoft.SqlServer.Management.Smo.Database(myServer, "UserTablesDb");
 
             try
             {
-                /*
-                myServer.ConnectionContext.Connect();
+                
+                //myServer.ConnectionContext.Connect();
 
-                 if (myServer.Databases["UserTablesDb"] != null)
+                 /*if (myServer.Databases["UserTablesDb"] != null)
                  {
                    myServer.Databases["UserTablesDb"].Drop();
                  }
-                 myServer.ConnectionContext.Connect();
+                 //myServer.ConnectionContext.Connect();
                 
                  myDatabase.Create();*/
 
                 try
                 {
+                    try
+                    {
+                        Table t = myDatabase.Tables["User Table_" + id + "_" + tableId];
+                        if (t != null)
+                        {
+                            t.Drop();
+                            System.Diagnostics.Debug.WriteLine("Drop table OK");
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        System.Diagnostics.Debug.WriteLine("Drop table failed");
+                        System.Diagnostics.Debug.WriteLine(e.Message);
+                        myServer.ConnectionContext.Disconnect();
+                    }
                     Table uTable = new Table(myDatabase, "User Table_" + id + "_" + tableId); //MUST BE DYNAMIC+UNIQUE
                     Column col = new Column(uTable, "UserTableId", DataType.Int);
                     col.Identity = true;
@@ -72,10 +88,12 @@ namespace eUp.Controllers
                         uTable.Columns.Add(col);
                     }
                     uTable.Create();
+                    System.Diagnostics.Debug.WriteLine("Table create OK");
                     myServer.ConnectionContext.Disconnect();
                 }
                 catch (Exception e)
                 {
+                    System.Diagnostics.Debug.WriteLine("Table create failed ");
                     System.Diagnostics.Debug.WriteLine(e.Message);
                     System.Diagnostics.Debug.WriteLine(e.InnerException.Message);
                     System.Diagnostics.Debug.WriteLine(e.InnerException.InnerException.Message);
