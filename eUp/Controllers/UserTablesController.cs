@@ -16,7 +16,7 @@ namespace eUp.Controllers
     [Authorize]
     public class UserTablesController : Controller
     {
-
+        
         private eUpDbContext context = new eUpDbContext();
         
         //
@@ -41,15 +41,13 @@ namespace eUp.Controllers
         public ViewResult SaveTable(int id, int tableId)
         {
             ICollection<Field> tableFields = context.Fields.Where(x => x.UserTableId == tableId).ToList();
-            var conn = new ServerConnection(@".\SQLEXPRESS");
-            var myServer = new Server(conn);
-           var myDatabase = myServer.Databases["UserTablesDb"];
-            //var myDatabase =  new Microsoft.SqlServer.Management.Smo.Database(myServer, "UserTablesDb");
-
+            ServerConnection conn = new ServerConnection(@".\SQLEXPRESS");
+            Server myServer = new Server(conn);
+            Microsoft.SqlServer.Management.Smo.Database myDatabase = myServer.Databases["UserTablesDb"];
             try
             {
-                
                 //myServer.ConnectionContext.Connect();
+
 
                  /*if (myServer.Databases["UserTablesDb"] != null)
                  {
@@ -58,24 +56,9 @@ namespace eUp.Controllers
                  //myServer.ConnectionContext.Connect();
                 
                  myDatabase.Create();*/
-
                 try
                 {
-                    try
-                    {
-                        Table t = myDatabase.Tables["User Table_" + id + "_" + tableId];
-                        if (t != null)
-                        {
-                            t.Drop();
-                            System.Diagnostics.Debug.WriteLine("Drop table OK");
-                        }
-                    }
-                    catch (Exception e)
-                    {
-                        System.Diagnostics.Debug.WriteLine("Drop table failed");
-                        System.Diagnostics.Debug.WriteLine(e.Message);
-                        myServer.ConnectionContext.Disconnect();
-                    }
+
                     Table uTable = new Table(myDatabase, "User Table_" + id + "_" + tableId); //MUST BE DYNAMIC+UNIQUE
                     Column col = new Column(uTable, "UserTableId", DataType.Int);
                     col.Identity = true;
@@ -88,12 +71,12 @@ namespace eUp.Controllers
                         uTable.Columns.Add(col);
                     }
                     uTable.Create();
-                    System.Diagnostics.Debug.WriteLine("Table create OK");
+                    System.Diagnostics.Debug.WriteLine("UserTable_" + id + "_" + tableId + " created");
                     myServer.ConnectionContext.Disconnect();
                 }
                 catch (Exception e)
                 {
-                    System.Diagnostics.Debug.WriteLine("Table create failed ");
+                    System.Diagnostics.Debug.WriteLine("Failed to create UserTable_" + id + "_" + tableId);
                     System.Diagnostics.Debug.WriteLine(e.Message);
                     System.Diagnostics.Debug.WriteLine(e.InnerException.Message);
                     System.Diagnostics.Debug.WriteLine(e.InnerException.InnerException.Message);
@@ -114,9 +97,9 @@ namespace eUp.Controllers
         // GET: /Tables/FillTable
         public ActionResult FillTable(int id, int tableId)
         {
-            var conn = new ServerConnection(@".\SQLEXPRESS");
-            var myServer = new Server(conn);
-            var myDatabase = myServer.Databases["UserTablesDb"];            
+            ServerConnection conn = new ServerConnection(@".\SQLEXPRESS");
+            Server myServer = new Server(conn);
+            Microsoft.SqlServer.Management.Smo.Database myDatabase = myServer.Databases["UserTablesDb"];  
 
             //Find table in DB with this name
             var searchName = ("User Table_" + id + "_" + tableId);
@@ -140,8 +123,6 @@ namespace eUp.Controllers
             }
             
             ViewBag.Columns = colNames;
-
-            
 
             return View(colNames);
             //return View(context.UserTables.Include(table => table.Fields).Single(table => table.UserTableId == id));
@@ -169,11 +150,10 @@ namespace eUp.Controllers
 
         public ViewResult TableData(int id, int tableId)
         {
+            ServerConnection conn = new ServerConnection(@".\SQLEXPRESS");
+            Server myServer = new Server(conn);
+            Microsoft.SqlServer.Management.Smo.Database myDatabase = myServer.Databases["UserTablesDb"];
             ICollection<dynamic> d = new Collection<dynamic>(); 
-            var conn = new ServerConnection(@".\SQLEXPRESS");
-            var myServer = new Server(conn);
-            var myDatabase = myServer.Databases["UserTablesDb"];
-           //var myDatabase =  new Microsoft.SqlServer.Management.Smo.Database(myServer, "UserTablesDb");
 
             try
             {
@@ -195,10 +175,6 @@ namespace eUp.Controllers
                 System.Diagnostics.Debug.WriteLine(e.InnerException.InnerException.Message);
                 //return View();
             }
-            //get data from table
-            //Collection<UserTable> ut = new Collection<UserTable>();
-            //ut.Add(context.UserTables.Include(table => table.Fields).Single(table => table.UserTableId == id));
-           // UserTable ut = context.UserTables.Include(table => table.Fields).Single(table => table.UserTableId == id);
             return View(d);
         }
 
@@ -232,8 +208,6 @@ namespace eUp.Controllers
                 context.UserTables.Add(table);
                 context.SaveChanges();
                 int tableId = table.UserTableId;
-                //return RedirectToAction("Index");  
-               // return RedirectToAction("ListTable", "UserTables", new { id = id });
                 return RedirectToAction("Create", "Fields", new { id = tableId });
             }
             ViewBag.PossibleUsers = context.Users;
@@ -245,14 +219,7 @@ namespace eUp.Controllers
  
         public ActionResult Edit(int id)
         {
-            // table = context.UserTables.Single(x => x.UserTableId == id);
             return View(context.UserTables.Include(table => table.Fields).Single(table => table.UserTableId == id));
-           /* UserTable t = context.UserTables.Single(x => x.UserTableId == id);
-            IList<Field> f = context.Fields.Where(y => y.UserTableId == id).ToList();
-            CompModel c = new CompModel();
-            c.Table = t;
-            c.Fields = f;
-            return View(c);*/
         }
 
         //
@@ -279,7 +246,6 @@ namespace eUp.Controllers
                 return RedirectToAction("ListTable");
             }
             ViewBag.PossibleUsers = context.Users;
-           // return View(table);
             return RedirectToAction("ListTable");
         }
 
@@ -297,11 +263,34 @@ namespace eUp.Controllers
 
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
-        {
+        { 
             UserTable table = context.UserTables.Single(x => x.UserTableId == id);
             context.UserTables.Remove(table);
+            DropUserTable(table.UserId, table.UserTableId);
             context.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        public void DropUserTable(int id, int tableId)
+        {
+            ServerConnection conn = new ServerConnection(@".\SQLEXPRESS");
+            Server myServer = new Server(conn);
+            Microsoft.SqlServer.Management.Smo.Database myDatabase = myServer.Databases["UserTablesDb"];
+            try
+            {
+                Table t = myDatabase.Tables["User Table_" + id + "_" + tableId];
+                if (t != null)
+                {
+                    t.Drop();
+                    System.Diagnostics.Debug.WriteLine("UserTable_" + id + "_" + tableId + " dropped");
+                }
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine("Failed to drop UserTable_" + id + "_" + tableId);
+                System.Diagnostics.Debug.WriteLine(e.Message);
+                myServer.ConnectionContext.Disconnect();
+            }
         }
 
         protected override void Dispose(bool disposing)
