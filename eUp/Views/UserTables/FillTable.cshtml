@@ -1,5 +1,4 @@
-﻿@model ICollection<dynamic>
-
+﻿
 @{
     ViewBag.Title = "FillTable";
 }
@@ -8,29 +7,27 @@
 
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
-    @Html.EditorForModel();
-    @*
+    @*Html.EditorForModel();*@
     <fieldset>
         <legend>UserTable</legend>
 
-         @for (int i = 0; i < Model.Count; i++)
+         @foreach(string i in ViewBag.Columns)
          {
+         <div class="editor-label">
+            <p>
+            @i
+            </p>
+         </div>
          <div class="editor-field">
             <p>
-            @Html.Label()
-            </p>
-            <p>
-             @Html.Editor(col)
+            @Html.TextBox(i)
             </p>
          </div>
          }
-        <p>
-            <input type="submit" value="Create" />
-        </p>
-    </fieldset>*@
+    </fieldset>
     <p>
-            <input type="submit" value="Create" />
-        </p>
+         <input type="submit" value="Create" />
+    </p>
 }
 
 <div>

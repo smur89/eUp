@@ -10,6 +10,8 @@ using Microsoft.SqlServer.Management.Smo;
 using Microsoft.SqlServer.Management.Common;
 using System.Collections.ObjectModel;
 using System.Collections;
+using System.Data.SqlClient;
+using System.Configuration;
  
 namespace eUp.Controllers
 {   
@@ -59,7 +61,7 @@ namespace eUp.Controllers
                 try
                 {
 
-                    Table uTable = new Table(myDatabase, "User Table_" + id + "_" + tableId); //MUST BE DYNAMIC+UNIQUE
+                    Table uTable = new Table(myDatabase, "UserTable_" + id + "_" + tableId); //MUST BE DYNAMIC+UNIQUE
                     Column col = new Column(uTable, "UserTableId", DataType.Int);
                     col.Identity = true;
                     uTable.Columns.Add(col);
@@ -108,23 +110,21 @@ namespace eUp.Controllers
             Table uTable = new Table();
             foreach (Table t in myDatabase.Tables)
             {
-                    if(t.Name == searchName)
-                    {
-                        uTable = t;
-                    }
+                if(t.Name == searchName)
+                {
+                    uTable = t;
+                }
             }
 
             // Add column names from table to List
-           // IList colNames = new List<string>();
             var colNames = new Collection<dynamic>();
             foreach (Column col in uTable.Columns)
             {
                 colNames.Add(col.Name.ToString());
             }
-            
+            colNames.Remove("UserTableId");
             ViewBag.Columns = colNames;
-
-            return View(colNames);
+            return View();
             //return View(context.UserTables.Include(table => table.Fields).Single(table => table.UserTableId == id));
         }
 
@@ -134,18 +134,26 @@ namespace eUp.Controllers
         [HttpPost]
         public ActionResult FillTable(FormCollection form)
         {
-            if (ModelState.IsValid)
-            {
-                IList listOfValues = new List<string>();
+            SqlConnection con = new SqlConnection();
+            con.ConnectionString = @"Data Source=.\sqlexpress;Initial Catalog=UserTablesDb;Integrated Security=True";
+            con.Open();
+            SqlDataAdapter da = new SqlDataAdapter();
+            SqlCommand cmd;
                 for (var i = 0; i < form.Count; i++)
                 {
-                    listOfValues.Add(form[i]);
+                    System.Diagnostics.Debug.Write(form.Get(i));
                 }
-                System.Diagnostics.Debug.Write(listOfValues);
                 //Submit values to SQL table
-            }
+                
+                cmd = new SqlCommand("INSERT INTO UserTable_3_22 (address, phone) " +
+                        "VALUES ('hey', 'yo')", con);
+               // da.InsertCommand = cmd;
+                cmd.ExecuteNonQuery();
+                cmd = new SqlCommand("select * from UserTable_3_22", con);
+                da.SelectCommand = cmd;
+               // System.Diagnostics.Debug.Write(a);
 
-            return View();
+           return RedirectToAction("ListTable");
         }
 
         public ViewResult TableData(int id, int tableId)
@@ -157,7 +165,6 @@ namespace eUp.Controllers
 
             try
             {
-                myServer.ConnectionContext.Connect();
                 foreach (Table table in myDatabase.Tables)
                 {
                     System.Diagnostics.Debug.WriteLine(" " + table.Name);
@@ -278,7 +285,7 @@ namespace eUp.Controllers
             Microsoft.SqlServer.Management.Smo.Database myDatabase = myServer.Databases["UserTablesDb"];
             try
             {
-                Table t = myDatabase.Tables["User Table_" + id + "_" + tableId];
+                Table t = myDatabase.Tables["UserTable_" + id + "_" + tableId];
                 if (t != null)
                 {
                     t.Drop();
