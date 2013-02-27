@@ -144,15 +144,18 @@ namespace eUp.Controllers
             con.Open();
             SqlDataAdapter da = new SqlDataAdapter();
             SqlCommand cmd;
-                for (var i = 0; i < form.Count; i++)
+            string tValues = "";
+                for (var i = 1; i < form.Count-1; i++)
                 {
-                    System.Diagnostics.Debug.Write(form.Get(i));
+                   // System.Diagnostics.Debug.Write(form.Get(i));
+                    tValues += "'" + form.Get(i)+"', ";
                 }
+                tValues += "'"+form.Get(form.Count-1)+"'";
+                System.Diagnostics.Debug.Write(tValues);
                 //Submit values to SQL table
 
                 string tName = form.Get("TableName");
-                cmd = new SqlCommand("INSERT INTO " + tName + " (address, phone) " +
-                        "VALUES ('hey', 'yo')", con);
+                cmd = new SqlCommand("INSERT INTO " + tName + " VALUES ("+ tValues +")", con);
                 cmd.ExecuteNonQuery();
 
                 SqlCommand c = new SqlCommand("select * from " + tName, con);
@@ -165,7 +168,7 @@ namespace eUp.Controllers
                 var items = i.ItemArray;
                 foreach (var v in items)
                 {
-                    System.Diagnostics.Debug.Write(v);
+                    System.Diagnostics.Debug.Write(v + " " );
                 }
             }
 
