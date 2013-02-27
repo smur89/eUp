@@ -103,11 +103,10 @@ namespace eUp.Controllers
             Server myServer = new Server(conn);
             Microsoft.SqlServer.Management.Smo.Database myDatabase = myServer.Databases["UserTablesDb"];  
 
-            //Find table in DB with this name
-            var searchName = ("User Table_" + id + "_" + tableId);
+           // var searchName = ("User Table_" + id + "_" + tableId);
 
             //Get required table
-            Table uTable = new Table();
+          /*  Table uTable = new Table();
             foreach (Table t in myDatabase.Tables)
             {
                 if(t.Name == searchName)
@@ -115,15 +114,21 @@ namespace eUp.Controllers
                     uTable = t;
                 }
             }
-
-            // Add column names from table to List
+            */
+            //Find table in DB with this name
+            Table uTable = myDatabase.Tables["UserTable_" + id + "_" + tableId];
             var colNames = new Collection<dynamic>();
-            foreach (Column col in uTable.Columns)
+            // Add column names from table to List
+            if (uTable != null)
             {
-                colNames.Add(col.Name.ToString());
+                foreach (Column col in uTable.Columns)
+                {
+                    colNames.Add(col.Name.ToString());
+                }
+                colNames.Remove("UserTableId");
             }
-            colNames.Remove("UserTableId");
             ViewBag.Columns = colNames;
+            ViewBag.TableName = ("UserTable_" + id + "_" + tableId);
             return View();
             //return View(context.UserTables.Include(table => table.Fields).Single(table => table.UserTableId == id));
         }
@@ -144,14 +149,25 @@ namespace eUp.Controllers
                     System.Diagnostics.Debug.Write(form.Get(i));
                 }
                 //Submit values to SQL table
-                
-                cmd = new SqlCommand("INSERT INTO UserTable_3_22 (address, phone) " +
+
+                string tName = form.Get("TableName");
+                cmd = new SqlCommand("INSERT INTO " + tName + " (address, phone) " +
                         "VALUES ('hey', 'yo')", con);
-               // da.InsertCommand = cmd;
                 cmd.ExecuteNonQuery();
-                cmd = new SqlCommand("select * from UserTable_3_22", con);
-                da.SelectCommand = cmd;
-               // System.Diagnostics.Debug.Write(a);
+
+                SqlCommand c = new SqlCommand("select * from " + tName, con);
+                SqlDataAdapter adapter = new SqlDataAdapter(c);
+                DataTable dt = new DataTable();
+                adapter.SelectCommand = c;
+                adapter.Fill(dt);
+            foreach(var i in dt.AsEnumerable())
+            {
+                var items = i.ItemArray;
+                foreach (var v in items)
+                {
+                    System.Diagnostics.Debug.Write(v);
+                }
+            }
 
            return RedirectToAction("ListTable");
         }

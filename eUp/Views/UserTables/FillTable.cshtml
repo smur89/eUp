@@ -7,9 +7,9 @@
 
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
-    @*Html.EditorForModel();*@
     <fieldset>
         <legend>UserTable</legend>
+        @Html.Hidden("TableName", (string)ViewBag.TableName)
 
          @foreach(string i in ViewBag.Columns)
          {
