@@ -15,23 +15,19 @@ using System.Configuration;
  
 namespace eUp.Controllers
 {   
-    [Authorize]
+    [Authorize] // prevent unauthorized users from accessing application
     public class UserTablesController : Controller
     {
-        
         private eUpDbContext context = new eUpDbContext();
         
         //
         // GET: /Tables/
-
         public ActionResult Index()
         {
            return RedirectToAction("ListTable", "UserTables");
-            //return View(context.UserTables.Include(table => table.User).Include(table => table.Fields).ToList());
-            //return View();
         }
 
-        //
+        // Retrieves Id of logged in user and return all tables that belonged to that user
         // POST: /Tables/
         public ViewResult ListTable()
         {
@@ -40,58 +36,72 @@ namespace eUp.Controllers
             return View(context.UserTables.Where(x => x.UserId == id));
         }
 
+        //takes 2 parameters, user id and table id and creates a user form with unique name and user defined fields
+        //
         public ViewResult SaveTable(int id, int tableId)
         {
+            //collection of user defined fields
             ICollection<Field> tableFields = context.Fields.Where(x => x.UserTableId == tableId).ToList();
+            //Connection to a server
             ServerConnection conn = new ServerConnection(@".\SQLEXPRESS");
             Server myServer = new Server(conn);
             Microsoft.SqlServer.Management.Smo.Database myDatabase = myServer.Databases["UserTablesDb"];
             try
             {
-                //myServer.ConnectionContext.Connect();
+                //Commented out section contains a code necessary to drop and recreate a table containig users' forms
+                //WARNING - ALL DATA WILL BE LOST
 
+                /*myServer.ConnectionContext.Connect();
+                if(myServer.Databases["UserTablesDb"] != null)
+                {
+                    myServer.Databases["UserTablesDb"].Drop();
+                }
+                myDatabase.Create();*/
 
-                 /*if (myServer.Databases["UserTablesDb"] != null)
-                 {
-                   myServer.Databases["UserTablesDb"].Drop();
-                 }
-                 //myServer.ConnectionContext.Connect();
-                
-                 myDatabase.Create();*/
                 try
                 {
-
-                    Table uTable = new Table(myDatabase, "UserTable_" + id + "_" + tableId); //MUST BE DYNAMIC+UNIQUE
+                    //creates a form with unique name based on user id and table id
+                    Table uTable = new Table(myDatabase, "UserTable_" + id + "_" + tableId);
+                    //first column of a form is always UserTableId
                     Column col = new Column(uTable, "UserTableId", DataType.Int);
                     col.Identity = true;
+                    //add column to a table
                     uTable.Columns.Add(col);
-
-                    foreach (var field in tableFields) // names in each table must be unique
+                    //loops through user defined fields and creates columns from them
+                    foreach (var field in tableFields) // TODO: names in each table must be unique
                     {
                         string name = field.FieldName;
-                        col = new Column(uTable, name, DataType.Text);//get dataType from dropdown box
+                        col = new Column(uTable, name, DataType.Text);//TODO: get dataType from dropdown box
                         uTable.Columns.Add(col);
                     }
+                    //saves table to a databes
                     uTable.Create();
+                    //TODO: Log file
                     System.Diagnostics.Debug.WriteLine("UserTable_" + id + "_" + tableId + " created");
+                    //disconnect from a server
                     myServer.ConnectionContext.Disconnect();
                 }
                 catch (Exception e)
                 {
+                    //error messages print off to a console
                     System.Diagnostics.Debug.WriteLine("Failed to create UserTable_" + id + "_" + tableId);
                     System.Diagnostics.Debug.WriteLine(e.Message);
                     System.Diagnostics.Debug.WriteLine(e.InnerException.Message);
                     System.Diagnostics.Debug.WriteLine(e.InnerException.InnerException.Message);
+                    //optional: may return a page with error description
                     //return View();
                 }
 
             }
             catch (Exception e)
             {
+                // disconnects from a server and print off error message  to a console
                 myServer.ConnectionContext.Disconnect();
                 System.Diagnostics.Debug.WriteLine(e.Message);
+                //optional: may return a page with error description
                 //return View();
             }
+            //pass collection of user defined fields to a View
             return View(tableFields);
         }
 
@@ -99,94 +109,83 @@ namespace eUp.Controllers
         // GET: /Tables/FillTable
         public ActionResult FillTable(int id, int tableId)
         {
+            //server connection objects
             ServerConnection conn = new ServerConnection(@".\SQLEXPRESS");
             Server myServer = new Server(conn);
             Microsoft.SqlServer.Management.Smo.Database myDatabase = myServer.Databases["UserTablesDb"];  
-
-           // var searchName = ("User Table_" + id + "_" + tableId);
-
-            //Get required table
-          /*  Table uTable = new Table();
-            foreach (Table t in myDatabase.Tables)
-            {
-                if(t.Name == searchName)
-                {
-                    uTable = t;
-                }
-            }
-            */
             //Find table in DB with this name
             Table uTable = myDatabase.Tables["UserTable_" + id + "_" + tableId];
             var colNames = new Collection<dynamic>();
-            // Add column names from table to List
+            // Add column names from table to collection
             if (uTable != null)
             {
                 foreach (Column col in uTable.Columns)
                 {
                     colNames.Add(col.Name.ToString());
                 }
+                //remove first column - UserTableId - from collection - exclude it from insert statement
                 colNames.Remove("UserTableId");
             }
+            //use ViewBag to pass column names and table name to a View
             ViewBag.Columns = colNames;
             ViewBag.TableName = ("UserTable_" + id + "_" + tableId);
             return View();
-            //return View(context.UserTables.Include(table => table.Fields).Single(table => table.UserTableId == id));
         }
 
-        //
+        //retrieves form values entered by user and save them in a user form
         // POST: /Tables/FillTable
-
         [HttpPost]
         public ActionResult FillTable(FormCollection form)
         {
+            //SQL connection object
             SqlConnection con = new SqlConnection();
+            //SQL connection string
             con.ConnectionString = @"Data Source=.\sqlexpress;Initial Catalog=UserTablesDb;Integrated Security=True";
             con.Open();
+            //SqlDataAdapter is a set of commands to manipulate data and database
             SqlDataAdapter da = new SqlDataAdapter();
             SqlCommand cmd;
+            //empty string from which a proper string of values to be inserted will be formed
             string tValues = "";
+                //loops through FormCollection to get values to be inserted
+                //index starts with 1 - value at index 0 is Table Name
+                //goes up to number of values in collection -1 // last value is added outside a loop to avoid adding a coma after last value
                 for (var i = 1; i < form.Count-1; i++)
                 {
-                   // System.Diagnostics.Debug.Write(form.Get(i));
+                    //construct a string of values by enclosing them inside ' ' and separating by comas
                     tValues += "'" + form.Get(i)+"', ";
                 }
+                //last value added without a coma at the end // otherwise - error
                 tValues += "'"+form.Get(form.Count-1)+"'";
-                System.Diagnostics.Debug.Write(tValues);
-                //Submit values to SQL table
-
+                //retreives name of a table
                 string tName = form.Get("TableName");
+                //Submit values to SQL table using table name and constructed string of values
                 cmd = new SqlCommand("INSERT INTO " + tName + " VALUES ("+ tValues +")", con);
                 cmd.ExecuteNonQuery();
-
            return RedirectToAction("ListTable");
         }
 
+        //returns all user form data
         public ViewResult TableData(int id, int tableId)
         {
+            //Sql connection established
             SqlConnection con = new SqlConnection();
             con.ConnectionString = @"Data Source=.\sqlexpress;Initial Catalog=UserTablesDb;Integrated Security=True";
             con.Open();
-            ServerConnection conn = new ServerConnection(@".\SQLEXPRESS");
-            Server myServer = new Server(conn);
-            Microsoft.SqlServer.Management.Smo.Database myDatabase = myServer.Databases["UserTablesDb"];
-            ICollection<dynamic> d = new Collection<dynamic>();
+            //name of the user form that contain data
             string tName = "UserTable_" + id + "_" + tableId;
+            //DataTable represent a table. Can be filled with table data
             DataTable dt = new DataTable();
             try
             {
-                /*foreach (Table table in myDatabase.Tables)
-                {
-                    System.Diagnostics.Debug.WriteLine(" " + table.Name);
-                    foreach (Column col in table.Columns)
-                    {
-                        System.Diagnostics.Debug.WriteLine("  " + col.Name + " " + col.DataType.Name);
-                        d.Add(col.Name);
-                    }
-                }*/
+                //return all values from user form
                 SqlCommand c = new SqlCommand("select * from " + tName, con);
                 SqlDataAdapter adapter = new SqlDataAdapter(c);
+                //execute select command
                 adapter.SelectCommand = c;
+                //fill DataTable object with form data
                 adapter.Fill(dt);
+                /*Debugging code
                 foreach (var i in dt.AsEnumerable())
                 {
                     var items = i.ItemArray;
@@ -194,16 +193,18 @@ namespace eUp.Controllers
                     {
                         System.Diagnostics.Debug.Write(v + " ");
                     }
-                }
+                }*/
             }
             catch (Exception e)
             {
+                //print off errors to a console
                 System.Diagnostics.Debug.WriteLine(e.Message);
                 System.Diagnostics.Debug.WriteLine(e.InnerException.Message);
                 System.Diagnostics.Debug.WriteLine(e.InnerException.InnerException.Message);
+                //optional: display a page with error description
                 //return View();
             }
-       
+            //pass DataTable object to a View to display data
             return View(dt);
         }
 
