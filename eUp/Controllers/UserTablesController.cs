@@ -69,7 +69,7 @@ namespace eUp.Controllers
                     foreach (var field in tableFields) // names in each table must be unique
                     {
                         string name = field.FieldName;
-                        col = new Column(uTable, name, DataType.Text);
+                        col = new Column(uTable, name, DataType.Text);//get dataType from dropdown box
                         uTable.Columns.Add(col);
                     }
                     uTable.Create();
