@@ -16,9 +16,9 @@ namespace eUp.Models
         [Key]
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int UserId { get; set; }
-        public string UserName { get; set; }
-        public string Email { get; set; }
+        public string UserName { get; set; }        
         public virtual ICollection<UserTable> Tables { get; set; }
+        public string Email { get; set; }
     }
 
     public class RegisterExternalLoginModel

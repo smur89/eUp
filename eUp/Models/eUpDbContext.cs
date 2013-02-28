@@ -20,7 +20,8 @@ namespace eUp.Models
         static eUpDbContext()
         {
             Database.SetInitializer(
-               new DropCreateDatabaseIfModelChanges<eUp.Models.eUpDbContext>());
+                new DropCreateDatabaseAlways<eUp.Models.eUpDbContext>());
+              // new DropCreateDatabaseIfModelChanges<eUp.Models.eUpDbContext>());
         }
 
         public DbSet<eUp.Models.User> Users { get; set; }

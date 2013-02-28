@@ -193,6 +193,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201302281948027_InitialCreate.cs" />
+    <Compile Include="Migrations\201302281948027_InitialCreate.Designer.cs">
+      <DependentUpon>201302281948027_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\CompModel.cs" />
     <Compile Include="Models\eUpDbContext.cs" />
@@ -370,6 +375,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\UserTables\FillTable.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201302281948027_InitialCreate.resx">
+      <DependentUpon>201302281948027_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
