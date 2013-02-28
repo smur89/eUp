@@ -158,39 +158,41 @@ namespace eUp.Controllers
                 cmd = new SqlCommand("INSERT INTO " + tName + " VALUES ("+ tValues +")", con);
                 cmd.ExecuteNonQuery();
 
-                SqlCommand c = new SqlCommand("select * from " + tName, con);
-                SqlDataAdapter adapter = new SqlDataAdapter(c);
-                DataTable dt = new DataTable();
-                adapter.SelectCommand = c;
-                adapter.Fill(dt);
-            foreach(var i in dt.AsEnumerable())
-            {
-                var items = i.ItemArray;
-                foreach (var v in items)
-                {
-                    System.Diagnostics.Debug.Write(v + " " );
-                }
-            }
-
            return RedirectToAction("ListTable");
         }
 
         public ViewResult TableData(int id, int tableId)
         {
+            SqlConnection con = new SqlConnection();
+            con.ConnectionString = @"Data Source=.\sqlexpress;Initial Catalog=UserTablesDb;Integrated Security=True";
+            con.Open();
             ServerConnection conn = new ServerConnection(@".\SQLEXPRESS");
             Server myServer = new Server(conn);
             Microsoft.SqlServer.Management.Smo.Database myDatabase = myServer.Databases["UserTablesDb"];
-            ICollection<dynamic> d = new Collection<dynamic>(); 
-
+            ICollection<dynamic> d = new Collection<dynamic>();
+            string tName = "UserTable_" + id + "_" + tableId;
+            DataTable dt = new DataTable();
             try
             {
-                foreach (Table table in myDatabase.Tables)
+                /*foreach (Table table in myDatabase.Tables)
                 {
                     System.Diagnostics.Debug.WriteLine(" " + table.Name);
                     foreach (Column col in table.Columns)
                     {
                         System.Diagnostics.Debug.WriteLine("  " + col.Name + " " + col.DataType.Name);
                         d.Add(col.Name);
+                    }
+                }*/
+                SqlCommand c = new SqlCommand("select * from " + tName, con);
+                SqlDataAdapter adapter = new SqlDataAdapter(c);
+                adapter.SelectCommand = c;
+                adapter.Fill(dt);
+                foreach (var i in dt.AsEnumerable())
+                {
+                    var items = i.ItemArray;
+                    foreach (var v in items)
+                    {
+                        System.Diagnostics.Debug.Write(v + " ");
                     }
                 }
             }
@@ -201,7 +203,8 @@ namespace eUp.Controllers
                 System.Diagnostics.Debug.WriteLine(e.InnerException.InnerException.Message);
                 //return View();
             }
-            return View(d);
+       
+            return View(dt);
         }
 
         //
