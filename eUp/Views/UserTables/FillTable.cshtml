@@ -4,7 +4,13 @@
 }
 
 <h2>Form</h2>
+ @section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/Scripts/jquery.validate.unobtrusive.js")
+    @Scripts.Render("~/Scripts/jquery-1.9.1.js")
+    @Scripts.Render("~/Scripts/jquery.validate.js")
 
+}
 @using (Html.BeginForm())
 {
     @Html.ValidationSummary(true)
@@ -14,24 +20,45 @@
         @Html.Hidden("TableName", (string)ViewBag.TableName)
 
         @{
-            //Counter to incremenet through Column data Types.
-            int counter = 0;
+    //Counter to incremenet through Column data Types.
+    int counter = 0;
          }
 
          @foreach (string i in ViewBag.Columns)
          {
-                                                //Colum DataTypes as Strings
-             <p>NEED TO VALIDATE TEXTBOX FOR @ViewBag.ColumnTypes[counter++] TYPE</p>
-         <div class="editor-label">
-            <p>
-            @i
-            </p>
-         </div>
-         <div class="editor-field">
-            <p>
-            @Html.TextBox(i)
-            </p>
-         </div>
+             //Colum DataTypes as Strings
+             var type = @ViewBag.ColumnTypes[counter++];
+             <label >@i, type: @type</label>
+             //renders text box input based on a type of column
+             //validates inputs using JQuery
+             if (type == "text")
+             {
+               <div class="editor-field">
+                <p>
+                 <input class="text-box single-line" data-val="true"
+                 data-val-length="Maximum length is 15" data-val-length-max="15" 
+                 data-val-required="This field is required." 
+                 id="@i" name="@i" type="text" value=""/>
+                 <span class="field-validation-valid" data-valmsg-for="@i" data-valmsg-replace="true"></span>
+                </p>
+               </div>
+             }
+             else if (type == "float")
+             {
+               <div class="editor-field">
+                <p>
+                 <input class="text-box single-line" data-val="true" 
+                 data-val-number="This field must be a number." data-val-range="The field must be between 1 and 100." 
+                 data-val-range-max="100" data-val-range-min="1" data-val-required="This field is required." 
+                 id="@i" name="@i" type="text" value=""/>
+                 <span class="field-validation-valid" data-valmsg-for="@i" data-valmsg-replace="true"></span>
+                </p>
+               </div>
+             }
+             else
+             {
+             // something similar
+             }
          }
     </fieldset>
     <p>
@@ -43,7 +70,3 @@
     @Html.ActionLink("Back to List", "Index")
 </div>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-
-}
