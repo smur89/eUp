@@ -17,12 +17,12 @@ namespace eUp.Models
         // 
         // System.Data.Entity.Database.SetInitializer(new System.Data.Entity.DropCreateDatabaseIfModelChanges<MvcApplication12.Models.MvcApplication12Context>());
 
-        static eUpDbContext()
+        /*static eUpDbContext()
         {
             Database.SetInitializer(
               // new DropCreateDatabaseAlways<eUp.Models.eUpDbContext>());
                new DropCreateDatabaseIfModelChanges<eUp.Models.eUpDbContext>());
-        }
+        }*/
 
         public DbSet<eUp.Models.User> Users { get; set; }
 
