@@ -20,6 +20,7 @@ namespace eUp.Models
         /*static eUpDbContext()
         {
             Database.SetInitializer(
+              // new DropCreateDatabaseAlways<eUp.Models.eUpDbContext>());
                new DropCreateDatabaseIfModelChanges<eUp.Models.eUpDbContext>());
         }*/
 
