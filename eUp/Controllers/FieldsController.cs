@@ -38,9 +38,9 @@ namespace eUp.Controllers
             f.UserTableId = id;
             //create a list of items to be displayed in a dropdown box when creating new field
             List<SelectListItem> items = new List<SelectListItem>();
-            items.Add(new SelectListItem { Text = "text", Value = "Text", Selected = true });
-            items.Add(new SelectListItem { Text = "number", Value = "Int" });
-            items.Add(new SelectListItem { Text = "true/false", Value = "Char" });
+            items.Add(new SelectListItem { Text = "Text", Value = "STRING", Selected = true });
+            items.Add(new SelectListItem { Text = "Numeric", Value = "INTEGER" });
+            items.Add(new SelectListItem { Text = "True/False", Value = "BOOL" });
             //assign that list to a ViewBag so that it can be accessed from a View
             ViewBag.fieldTypes = items;
             //pass an empty form field to a View

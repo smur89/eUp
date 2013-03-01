@@ -22,7 +22,7 @@ namespace eUp.Controllers
         private eUpDbContext context = new eUpDbContext();
         
         //default action
-        // GET: /Tables/
+        // GET: /UserTables/
         public ActionResult Index()
         {
             //display a list of user forms
@@ -30,7 +30,7 @@ namespace eUp.Controllers
         }
 
         // Retrieves Id of logged in user and return all tables that belong to that user
-        // POST: /Tables/
+        // POST: /UserTables/ListTable
         public ViewResult ListTable()
         {
             System.Web.Security.MembershipUser user = System.Web.Security.Membership.GetUser();
@@ -72,9 +72,28 @@ namespace eUp.Controllers
                     //loops through user defined fields and creates columns from them
                     foreach (var field in tableFields) // TODO: names in each table must be unique
                     {
+                        string type = field.FieldType;
                         string name = field.FieldName;
-                        col = new Column(uTable, name, DataType.Text);//TODO: get dataType from dropdown box
-                        uTable.Columns.Add(col);
+                        //Switch on value taken from drop down box on field create view
+                        switch (type)
+                        {
+                            case "STRING": //Store in DB as Text
+                              col = new Column(uTable, name, DataType.Text);//TODO: get dataType from dropdown box
+                              uTable.Columns.Add(col);
+                              break;
+                            case "INTEGER": //Store in DB as Float
+                              col = new Column(uTable, name, DataType.Float);//TODO: get dataType from dropdown box
+                              uTable.Columns.Add(col);
+                              break;
+                            case "BOOL": //Store in DB as Bit
+                              col = new Column(uTable, name, DataType.Bit);//TODO: get dataType from dropdown box
+                              uTable.Columns.Add(col);
+                              break;
+                           default: //Something went wrong. Oh no!
+                              System.Diagnostics.Debug.Write("Invalid dropbox selection.");            
+                              break;
+                         }
+                        
                     }
                     col = new Column(uTable, "Date Submited", DataType.Text);
                     uTable.Columns.Add(col);
@@ -110,7 +129,7 @@ namespace eUp.Controllers
         }
 
         //
-        // GET: /Tables/FillTable
+        // GET: /UserTables/FillTable
         public ActionResult FillTable(int id, int tableId)
         {
             //server connection objects
@@ -120,25 +139,29 @@ namespace eUp.Controllers
             //Find table in DB with this name
             Table uTable = myDatabase.Tables["UserTable_" + id + "_" + tableId];
             var colNames = new Collection<dynamic>();
+            var colTypes = new Collection<string>();
             // Add column names from table to collection
             if (uTable != null)
             {
                 foreach (Column col in uTable.Columns)
                 {
                     colNames.Add(col.Name.ToString());
+                    colTypes.Add(col.DataType.ToString());
                 }
                 //remove first column - UserTableId - from collection - exclude it from insert statement
                 colNames.Remove("UserTableId");
                 colNames.Remove("Date Submited");
+                colTypes.RemoveAt(0);
             }
             //use ViewBag to pass column names and table name to a View
             ViewBag.Columns = colNames;
+            ViewBag.ColumnTypes = colTypes;
             ViewBag.TableName = ("UserTable_" + id + "_" + tableId);
             return View();
         }
 
         //retrieves form values entered by user and save them in a user form
-        // POST: /Tables/FillTable
+        // POST: /UserTables/FillTable
         [HttpPost]
         public ActionResult FillTable(FormCollection form)
         {
@@ -224,14 +247,14 @@ namespace eUp.Controllers
         }
 
         //returns a View to create user form
-        // GET: /Tables/Create
+        // GET: /UserTables/Create
         public ActionResult Create()
         {
             return View();
         } 
 
         //save user form and returns a View to create form fields
-        // POST: /Tables/Create
+        // POST: /UserTables/Create
         [HttpPost]
         public ActionResult Create(UserTable table)
         {
@@ -256,14 +279,14 @@ namespace eUp.Controllers
         }
         
         //return a View to edit user form
-        // GET: /Tables/Edit/5
+        // GET: /UserTables/Edit/5
         public ActionResult Edit(int id)
         {
             return View(context.UserTables.Include(table => table.Fields).Single(table => table.UserTableId == id));
         }
 
         //retrieves all values from Edit View and saves them
-        // POST: /Tables/Edit/5
+        // POST: /UserTables/Edit/5
         [HttpPost]
         public ActionResult Edit(FormCollection table)
         {
@@ -298,7 +321,7 @@ namespace eUp.Controllers
         }
 
         //return a View to confirm form deletion
-        // GET: /Tables/Delete/5
+        // GET: /UserTables/Delete/5
         public ActionResult Delete(int id)
         {
             UserTable table = context.UserTables.Single(x => x.UserTableId == id);
@@ -306,7 +329,7 @@ namespace eUp.Controllers
         }
 
         //form deletion confirmed
-        // POST: /Tables/Delete/5
+        // POST: /UserTables/Delete/5
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         { 

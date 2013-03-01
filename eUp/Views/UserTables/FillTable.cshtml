@@ -5,14 +5,23 @@
 
 <h2>Form</h2>
 
-@using (Html.BeginForm()) {
+@using (Html.BeginForm())
+{
     @Html.ValidationSummary(true)
     <fieldset>
+
         <legend>UserTable</legend>
         @Html.Hidden("TableName", (string)ViewBag.TableName)
 
-         @foreach(string i in ViewBag.Columns)
+        @{
+            //Counter to incremenet through Column data Types.
+            int counter = 0;
+         }
+
+         @foreach (string i in ViewBag.Columns)
          {
+                                                //Colum DataTypes as Strings
+             <p>NEED TO VALIDATE TEXTBOX FOR @ViewBag.ColumnTypes[counter++] TYPE</p>
          <div class="editor-label">
             <p>
             @i
@@ -36,4 +45,5 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+
 }

@@ -11,9 +11,9 @@ namespace eUp.Models
     {
         public int FieldId { get; set; }
         public int UserTableId { get; set; }
-        [DisplayName("Field name")]
+        [DisplayName("Field Name")]
         public string FieldName { get; set; }
-        [DisplayName("Type of field")]
+        [DisplayName("Type of Field")]
         public string FieldType { get; set; }
         public virtual UserTable Table { get; set; }
     }
