@@ -40,7 +40,7 @@ namespace eUp.Controllers
             Field f = new Field();
             f.UserTableId = id;
             List<SelectListItem> items = new List<SelectListItem>();
-            items.Add(new SelectListItem { Text = "text", Value = "Text",Selected = true });
+            items.Add(new SelectListItem { Text = "text", Value = "Text", Selected = true });
             items.Add(new SelectListItem { Text = "number", Value = "Int" });
             items.Add(new SelectListItem { Text = "true/false", Value = "Char" });
             ViewBag.fieldTypes = items;

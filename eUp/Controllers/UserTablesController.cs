@@ -22,7 +22,7 @@ namespace eUp.Controllers
         private eUpDbContext context = new eUpDbContext();
         
         //
-        // GET: /Tables/
+        // GET: /UserTables/
 
         public ActionResult Index()
         {
@@ -32,7 +32,7 @@ namespace eUp.Controllers
         }
 
         //
-        // POST: /Tables/
+        // POST: /UserTables/ListTable
         public ViewResult ListTable()
         {
             System.Web.Security.MembershipUser user = System.Web.Security.Membership.GetUser();
@@ -40,6 +40,7 @@ namespace eUp.Controllers
             return View(context.UserTables.Where(x => x.UserId == id));
         }
 
+        // GET /UserTables/SaveTable
         public ViewResult SaveTable(int id, int tableId)
         {
             ICollection<Field> tableFields = context.Fields.Where(x => x.UserTableId == tableId).ToList();
@@ -135,6 +136,8 @@ namespace eUp.Controllers
 
         //
         // POST: /Tables/FillTable
+        //
+        //Fill Table with values collected from form
 
         [HttpPost]
         public ActionResult FillTable(FormCollection form)
