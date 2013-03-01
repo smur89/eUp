@@ -76,6 +76,8 @@ namespace eUp.Controllers
                         col = new Column(uTable, name, DataType.Text);//TODO: get dataType from dropdown box
                         uTable.Columns.Add(col);
                     }
+                    col = new Column(uTable, "Date Submited", DataType.Text);
+                    uTable.Columns.Add(col);
                     //saves table to a databes
                     uTable.Create();
                     //TODO: Log file
@@ -127,6 +129,7 @@ namespace eUp.Controllers
                 }
                 //remove first column - UserTableId - from collection - exclude it from insert statement
                 colNames.Remove("UserTableId");
+                colNames.Remove("Date Submited");
             }
             //use ViewBag to pass column names and table name to a View
             ViewBag.Columns = colNames;
@@ -158,11 +161,13 @@ namespace eUp.Controllers
                     tValues += "'" + form.Get(i)+"', ";
                 }
                 //last value added without a coma at the end // otherwise - error
-                tValues += "'"+form.Get(form.Count-1)+"'";
+                tValues += "'"+form.Get(form.Count-1)+"','";
                 //retreives name of a table
                 string tName = form.Get("TableName");
+                string date = System.DateTime.Now.ToString();
+                tValues += date + "'";
                 //Submit values to SQL table using table name and constructed string of values
-                cmd = new SqlCommand("INSERT INTO " + tName + " VALUES ("+ tValues +")", con);
+                cmd = new SqlCommand("INSERT INTO " + tName + " VALUES ("+ tValues + ")", con);
                 cmd.ExecuteNonQuery();
            return RedirectToAction("ListTable");
         }
