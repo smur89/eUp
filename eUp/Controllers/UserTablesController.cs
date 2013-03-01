@@ -18,16 +18,18 @@ namespace eUp.Controllers
     [Authorize] // prevent unauthorized users from accessing application
     public class UserTablesController : Controller
     {
+        //create an instance of a database
         private eUpDbContext context = new eUpDbContext();
         
-        //
+        //default action
         // GET: /Tables/
         public ActionResult Index()
         {
-           return RedirectToAction("ListTable", "UserTables");
+            //display a list of user forms
+            return RedirectToAction("ListTable", "UserTables");
         }
 
-        // Retrieves Id of logged in user and return all tables that belonged to that user
+        // Retrieves Id of logged in user and return all tables that belong to that user
         // POST: /Tables/
         public ViewResult ListTable()
         {
@@ -216,113 +218,131 @@ namespace eUp.Controllers
             return View(table);
         }
 
-        //
+        //returns a View to create user form
         // GET: /Tables/Create
         public ActionResult Create()
         {
-            ViewBag.PossibleUsers = context.Users;
             return View();
         } 
 
-        //
+        //save user form and returns a View to create form fields
         // POST: /Tables/Create
-
         [HttpPost]
         public ActionResult Create(UserTable table)
         {
+            //validate state of model-binding
             if (ModelState.IsValid)
             {
+                //currently logged in user
                 System.Web.Security.MembershipUser user = System.Web.Security.Membership.GetUser();
+                //currently logged in user's id
                 int id = (int)user.ProviderUserKey;
+                //assign user id to a form user id
                 table.UserId = id;
                 context.UserTables.Add(table);
                 context.SaveChanges();
+                //assign form id to a variable
                 int tableId = table.UserTableId;
+                //call a methof to create form fields and pass in a form id
                 return RedirectToAction("Create", "Fields", new { id = tableId });
             }
-            ViewBag.PossibleUsers = context.Users;
+            //if state not valid create again
             return View(table);
         }
         
-        //
+        //return a View to edit user form
         // GET: /Tables/Edit/5
- 
         public ActionResult Edit(int id)
         {
             return View(context.UserTables.Include(table => table.Fields).Single(table => table.UserTableId == id));
         }
 
-        //
+        //retrieves all values from Edit View and saves them
         // POST: /Tables/Edit/5
-
         [HttpPost]
         public ActionResult Edit(FormCollection table)
         {
             if (ModelState.IsValid)
             {
+                //all values return as string
+                //IDs need to be parsed to INT
                 int id = int.Parse(table.Get("UserTableId"));
+                //fetch a user form to be changed from DB
                 UserTable t = context.UserTables.Include(f => f.Fields).Single(f => f.UserTableId == id);
-                ///check if fields null[]
+                //change form name
                 t.TableName = table.Get("TableName");
+                //construct one, long string of fields' names separated by commas
                 string s = table.Get("field.FieldName");
+                //all values need to be separated and put into an array so that they can be accessed separately
                 string[] fNames = s.Split(',');
+                //array index
                 int index = 0;
+                //loops through fields in a form
                 foreach (var n in t.Fields)
                 {
+                    //assing a new field name and increment array index by 1
                     n.FieldName = fNames[index++];
                 }
+                //indicate to Entity Framework that a table has been changed and save it
                 context.Entry(t).State = EntityState.Modified;
                 context.SaveChanges();
+                //return to form list
                 return RedirectToAction("ListTable");
             }
-            ViewBag.PossibleUsers = context.Users;
             return RedirectToAction("ListTable");
         }
 
-        //
+        //return a View to confirm form deletion
         // GET: /Tables/Delete/5
- 
         public ActionResult Delete(int id)
         {
             UserTable table = context.UserTables.Single(x => x.UserTableId == id);
             return View(table);
         }
 
-        //
+        //form deletion confirmed
         // POST: /Tables/Delete/5
-
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         { 
+            //fetch a table from database and remove it
             UserTable table = context.UserTables.Single(x => x.UserTableId == id);
             context.UserTables.Remove(table);
+            //call a method to remove associated user form
             DropUserTable(table.UserId, table.UserTableId);
             context.SaveChanges();
             return RedirectToAction("Index");
         }
-
+        
+        //delete user form associated with user table
         public void DropUserTable(int id, int tableId)
         {
+            //SMO connection objects
             ServerConnection conn = new ServerConnection(@".\SQLEXPRESS");
             Server myServer = new Server(conn);
             Microsoft.SqlServer.Management.Smo.Database myDatabase = myServer.Databases["UserTablesDb"];
             try
             {
+                //fetch user form
                 Table t = myDatabase.Tables["UserTable_" + id + "_" + tableId];
+                //check if it is not null
                 if (t != null)
                 {
+                    //if exits delete it
                     t.Drop();
                     System.Diagnostics.Debug.WriteLine("UserTable_" + id + "_" + tableId + " dropped");
                 }
             }
             catch (Exception e)
             {
+                //print off error messages and close server connection
                 System.Diagnostics.Debug.WriteLine("Failed to drop UserTable_" + id + "_" + tableId);
                 System.Diagnostics.Debug.WriteLine(e.Message);
                 myServer.ConnectionContext.Disconnect();
             }
         }
 
+        //release unmanaged resources
         protected override void Dispose(bool disposing)
         {
             if (disposing) {

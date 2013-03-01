@@ -198,7 +198,6 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
-    <Compile Include="Models\CompModel.cs" />
     <Compile Include="Models\eUpDbContext.cs" />
     <Compile Include="Models\Field.cs" />
     <Compile Include="Models\UserTable.cs" />
