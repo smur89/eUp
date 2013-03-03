@@ -26,9 +26,11 @@
 
          @foreach (string i in ViewBag.Columns)
          {
-             //Colum DataTypes as Strings
+                        //Colum DataTypes as Strings
              var type = @ViewBag.ColumnTypes[counter++];
-             <label >@i, type: @type</label>
+             
+             <label >@i</label>
+             <p>type: @type</p>
              //renders text box input based on a type of column
              //validates inputs using JQuery
              if (type == "text")
@@ -36,7 +38,7 @@
                <div class="editor-field">
                 <p>
                  <input class="text-box single-line" data-val="true"
-                 data-val-length="Maximum length is 15" data-val-length-max="15" 
+                 data-val-length="Maximum length is 20" data-val-length-max="20" 
                  data-val-required="This field is required." 
                  id="@i" name="@i" type="text" value=""/>
                  <span class="field-validation-valid" data-valmsg-for="@i" data-valmsg-replace="true"></span>
@@ -48,8 +50,7 @@
                <div class="editor-field">
                 <p>
                  <input class="text-box single-line" data-val="true" 
-                 data-val-number="This field must be a number." data-val-range="The field must be between 1 and 100." 
-                 data-val-range-max="100" data-val-range-min="1" data-val-required="This field is required." 
+                 data-val-number="This field must be a number." data-val-required="This field is required." 
                  id="@i" name="@i" type="text" value=""/>
                  <span class="field-validation-valid" data-valmsg-for="@i" data-valmsg-replace="true"></span>
                 </p>
@@ -57,7 +58,11 @@
              }
              else
              {
-             // something similar
+                <span class="field-validation-valid" data-valmsg-for="bool" data-valmsg-replace="true"></span>
+                <p><input type="radio" name="bool" id="true" value="true" data-val="true" data-val-required="Please choose one of these options:"/>
+                <label for="true">True</label></p>
+                <p><input type="radio" name="bool" id="false" value="false"/> 
+                <label for="false">False</label></p>
              }
          }
     </fieldset>
