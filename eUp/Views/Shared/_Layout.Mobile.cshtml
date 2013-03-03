@@ -13,9 +13,31 @@
         </script>
     </head> 
 <body> 
-
+    
     <div data-role="page" data-theme="a">
         @Html.Partial("_ViewSwitcher")
+         <div class="float-right">
+        <section id="login">
+        @Html.Partial("_LoginPartial")
+        </section>
+        </div>
+         <nav>
+                        <ul id="menu">
+                    @if (Request.IsAuthenticated)
+                    {
+                            <li>@Html.ActionLink("My Forms", "ListTable", "UserTables")</li>
+                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                            <li>@Html.ActionLink("About", "About", "Home")</li>
+                            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    }
+                    else
+                    {
+                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                            <li>@Html.ActionLink("About", "About", "Home")</li>
+                            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    }
+                        </ul>
+                    </nav>
 
         <div data-role="header">
             <h1>@ViewBag.Title</h1>
