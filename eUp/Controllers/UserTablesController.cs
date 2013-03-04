@@ -12,6 +12,7 @@ using System.Collections.ObjectModel;
 using System.Collections;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.Text;
  
 namespace eUp.Controllers
 {   
@@ -35,8 +36,78 @@ namespace eUp.Controllers
         {
             System.Web.Security.MembershipUser user = System.Web.Security.Membership.GetUser();
             int id = (int)user.ProviderUserKey;
+            IEnumerable<UserTable> tables = context.UserTables.Where(x => x.UserId == id);
+            //calls a method to check if tables have been submitted
+            MatchTables(tables);
             return View(context.UserTables.Where(x => x.UserId == id));
         }
+
+        //check 
+        public void MatchTables(IEnumerable<UserTable> tables)
+        {
+            ServerConnection conn = new ServerConnection(@".\SQLEXPRESS");
+            Server myServer = new Server(conn);
+            Microsoft.SqlServer.Management.Smo.Database myDatabase = myServer.Databases["UserTablesDb"];
+            ViewBag.TableMatch = new List<bool>();
+            foreach (UserTable t in tables)
+            {
+                Table uTable = myDatabase.Tables["UserTable_" + t.UserId + "_" + t.UserTableId];
+                if (uTable != null)
+                {
+                    ViewBag.TableMatch.Add(true);
+                }
+                else
+                {
+                    ViewBag.TableMatch.Add(false);
+                }
+            }
+        }
+
+        public void ExportCSV(int id, int tableId)
+        {
+            SqlConnection con = new SqlConnection();
+            con.ConnectionString = @"Data Source=.\sqlexpress;Initial Catalog=UserTablesDb;Integrated Security=True";
+            SqlCommand c = new SqlCommand("select * from " + "UserTable_" + id + "_" + tableId, con);
+            c.CommandType = CommandType.Text;
+            c.Connection.Open();
+            SqlDataReader reader = c.ExecuteReader();
+
+            StringBuilder sb = new StringBuilder();
+            ICollection<Field> tableFields = context.Fields.Where(x => x.UserTableId == tableId).ToList();
+            String fileName = "UserTable_" + id + "_" + tableId + ".csv";
+            Response.ContentType = "text/csv";
+            Response.Charset = "";
+            Response.AddHeader("Content-Disposition", "attachment;filename=" + fileName);
+            Response.ContentEncoding = Encoding.Unicode;
+            Response.BinaryWrite(Encoding.Unicode.GetPreamble());
+
+            //sb.Append("Id;First name;Last name;Phone;Created date");
+           // sb.Append("\n");
+            foreach (var column in tableFields)
+            {
+                sb.Append(column.FieldName.ToString());
+                sb.Append(", ");
+            }
+            sb.Append("\n");
+            while (reader.Read())
+            {
+                foreach (var column in tableFields)
+                {
+                    sb.Append(reader[column.FieldName.ToString()].ToString());
+                    sb.Append(", ");
+                }
+                sb.Append("\n");
+            }
+            reader.Close();
+            c.Connection.Close();
+
+            Response.Write(sb.ToString());
+            Response.Flush();
+
+            Response.End();
+
+        }
+
 
         //takes 2 parameters, user id and table id and creates a user form with unique name and user defined fields
         //
