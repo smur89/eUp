@@ -18,6 +18,12 @@ namespace eUp
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+            routes.MapRoute(
+         "Forms",
+         "public/form/{username}/{tableId}",
+         new { controller = "UserTables", action = "FillTableRoute", username = UrlParameter.Optional, tableId = UrlParameter.Optional }
+         );
         }
     }
 }

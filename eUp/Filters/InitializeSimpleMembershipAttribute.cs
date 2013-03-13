@@ -38,7 +38,7 @@ namespace eUp.Filters
                         }
                     }
 
-                    WebSecurity.InitializeDatabaseConnection("eUpDbContext", "User", "UserId", "UserName", autoCreateTables: true);
+                   WebSecurity.InitializeDatabaseConnection("eUpDbContext", "User", "UserId", "UserName", autoCreateTables: true);
                 }
                 catch (Exception ex)
                 {

@@ -199,8 +199,17 @@ namespace eUp.Controllers
             return View(tableFields);
         }
 
+        [AllowAnonymous]
+        public ActionResult FillTableRoute(string username, int tableId)
+        {
+            new eUp.Filters.InitializeSimpleMembershipAttribute();
+            int i = WebMatrix.WebData.WebSecurity.GetUserId(username);
+            return RedirectToAction("FillTable", new { id = i, tableId = tableId });
+        }
+
         //
         // GET: /UserTables/FillTable
+        [AllowAnonymous]
         public ActionResult FillTable(int id, int tableId)
         {
             //server connection objects
@@ -233,6 +242,7 @@ namespace eUp.Controllers
 
         //retrieves form values entered by user and save them in a user form
         // POST: /UserTables/FillTable
+        [AllowAnonymous]
         [HttpPost]
         public ActionResult FillTable(FormCollection form)
         {
