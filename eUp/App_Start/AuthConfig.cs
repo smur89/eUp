@@ -19,14 +19,14 @@ namespace eUp
             //    clientSecret: "");
 
             //OAuthWebSecurity.RegisterTwitterClient(
-            //    consumerKey: "",
-            //    consumerSecret: "");
+              //  consumerKey: "ADauTQYC6mnRBImdvMBFQ",
+                //consumerSecret: "RvHPT0cMTc35xXFLB8MmIFR0de3Pj0MBV3UFYAZWzfb4");
 
-            //OAuthWebSecurity.RegisterFacebookClient(
-            //    appId: "",
-            //    appSecret: "");
+            OAuthWebSecurity.RegisterFacebookClient(
+               appId: "535858986458141",
+               appSecret: "17fccec8c90134d8580c470bd76d60c6");
 
-            //OAuthWebSecurity.RegisterGoogleClient();
+            OAuthWebSecurity.RegisterGoogleClient();
         }
     }
 }

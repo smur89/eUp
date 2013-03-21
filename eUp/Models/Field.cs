@@ -12,6 +12,7 @@ namespace eUp.Models
         public int FieldId { get; set; }
         public int UserTableId { get; set; }
         [DisplayName("Field Name")]
+        [Required]
         public string FieldName { get; set; }
         [DisplayName("Type of Field")]
         public string FieldType { get; set; }

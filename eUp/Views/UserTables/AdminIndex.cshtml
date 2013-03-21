@@ -1,0 +1,12 @@
+﻿@model IEnumerable<eUp.Models.UserTable>
+
+@{
+    ViewBag.Title = "AdminIndex";
+}
+
+<h2>AdminIndex</h2>
+@{
+    var grid = new WebGrid(Model);
+}
+
+@grid.GetHtml()

@@ -1,0 +1,196 @@
+﻿<error errorId="1eddff31-2789-4752-9016-5b0abf2d219a" application="/" host="MAGIC-PC" type="System.Net.WebException" message="The remote server returned an error: (401) Unauthorized." source="System" detail="DotNetOpenAuth.Messaging.ProtocolException: Error occurred while sending a direct message or getting the response. ---&gt; System.Net.WebException: The remote server returned an error: (401) Unauthorized.&#xD;&#xA;   at System.Net.HttpWebRequest.GetResponse()&#xD;&#xA;   at DotNetOpenAuth.Messaging.StandardWebRequestHandler.GetResponse(HttpWebRequest request, DirectWebRequestOptions options)&#xD;&#xA;   --- End of inner exception stack trace ---&#xD;&#xA;   at DotNetOpenAuth.Messaging.StandardWebRequestHandler.GetResponse(HttpWebRequest request, DirectWebRequestOptions options)&#xD;&#xA;   at DotNetOpenAuth.Messaging.StandardWebRequestHandler.GetResponse(HttpWebRequest request)&#xD;&#xA;   at DotNetOpenAuth.Messaging.Channel.GetDirectResponse(HttpWebRequest webRequest)&#xD;&#xA;   at DotNetOpenAuth.Messaging.Channel.RequestCore(IDirectedProtocolMessage request)&#xD;&#xA;   at DotNetOpenAuth.Messaging.Channel.Request(IDirectedProtocolMessage requestMessage)&#xD;&#xA;   at DotNetOpenAuth.Messaging.Channel.Request[TResponse](IDirectedProtocolMessage requestMessage)&#xD;&#xA;   at DotNetOpenAuth.OAuth.ConsumerBase.PrepareRequestUserAuthorization(Uri callback, IDictionary`2 requestParameters, IDictionary`2 redirectParameters, String&amp; requestToken)&#xD;&#xA;   at DotNetOpenAuth.OAuth.WebConsumer.PrepareRequestUserAuthorization(Uri callback, IDictionary`2 requestParameters, IDictionary`2 redirectParameters)&#xD;&#xA;   at DotNetOpenAuth.AspNet.Clients.DotNetOpenAuthWebConsumer.RequestAuthentication(Uri callback)&#xD;&#xA;   at DotNetOpenAuth.AspNet.Clients.OAuthClient.RequestAuthentication(HttpContextBase context, Uri returnUrl)&#xD;&#xA;   at DotNetOpenAuth.AspNet.OpenAuthSecurityManager.RequestAuthentication(String returnUrl)&#xD;&#xA;   at Microsoft.Web.WebPages.OAuth.OAuthWebSecurity.RequestAuthenticationCore(HttpContextBase context, String provider, String returnUrl)&#xD;&#xA;   at Microsoft.Web.WebPages.OAuth.OAuthWebSecurity.RequestAuthentication(String provider, String returnUrl)&#xD;&#xA;   at eUp.Controllers.AccountController.ExternalLoginResult.ExecuteResult(ControllerContext context) in C:\Users\MaGiC\Documents\Visual Studio 2010\Projects\eUp_GIT\eUp\eUp\Controllers\AccountController.cs:line 364&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.&lt;&gt;c__DisplayClass1a.&lt;InvokeActionResultWithFilters&gt;b__17()&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.&lt;&gt;c__DisplayClass1a.&lt;&gt;c__DisplayClass1c.&lt;InvokeActionResultWithFilters&gt;b__19()&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.&lt;&gt;c__DisplayClass1a.&lt;&gt;c__DisplayClass1c.&lt;InvokeActionResultWithFilters&gt;b__19()&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass25.&lt;&gt;c__DisplayClass2a.&lt;BeginInvokeAction&gt;b__20()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass25.&lt;BeginInvokeAction&gt;b__22(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Controller.&lt;&gt;c__DisplayClass1d.&lt;BeginExecuteCore&gt;b__18(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.&lt;&gt;c__DisplayClass4.&lt;MakeVoidDelegate&gt;b__3(IAsyncResult ar)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()&#xD;&#xA;   at System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.&lt;&gt;c__DisplayClass4.&lt;MakeVoidDelegate&gt;b__3(IAsyncResult ar)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()&#xD;&#xA;   at System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.&lt;&gt;c__DisplayClass8.&lt;BeginProcessRequest&gt;b__3(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.&lt;&gt;c__DisplayClass4.&lt;MakeVoidDelegate&gt;b__3(IAsyncResult ar)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()&#xD;&#xA;   at System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)&#xD;&#xA;   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()&#xD;&#xA;   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean&amp; completedSynchronously)" time="2013-03-21T14:34:27.4610547Z">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CACHE_CONTROL:max-age=0&#xD;&#xA;HTTP_CONNECTION:keep-alive&#xD;&#xA;HTTP_CONTENT_LENGTH:216&#xD;&#xA;HTTP_CONTENT_TYPE:application/x-www-form-urlencoded&#xD;&#xA;HTTP_ACCEPT:text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8&#xD;&#xA;HTTP_ACCEPT_CHARSET:ISO-8859-1,utf-8;q=0.7,*;q=0.3&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip,deflate,sdch&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:en-US,en;q=0.8&#xD;&#xA;HTTP_COOKIE:__RequestVerificationToken=XYp2R7FZR8xxfs2O1YLdWkOE04jdGFQmGAjJSeyFh4vzsE3be9lrtcgxBm-rAVfAbA__LCkwL7IdcD83QwYLJvd8xIjAWzF1XFcALijIqzkuCVS_zkNyx99yfGFrGczrRBe1x9FXUikMR8xlH-R--g2; ASP.NET_SessionId=phdldxcyggij1o414hf4szxd&#xD;&#xA;HTTP_HOST:localhost:52919&#xD;&#xA;HTTP_REFERER:http://localhost:52919/Account/Login&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.22 (KHTML, like Gecko) Chrome/25.0.1364.172 Safari/537.22&#xD;&#xA;HTTP_ORIGIN:http://localhost:52919&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Cache-Control: max-age=0&#xD;&#xA;Connection: keep-alive&#xD;&#xA;Content-Length: 216&#xD;&#xA;Content-Type: application/x-www-form-urlencoded&#xD;&#xA;Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8&#xD;&#xA;Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.3&#xD;&#xA;Accept-Encoding: gzip,deflate,sdch&#xD;&#xA;Accept-Language: en-US,en;q=0.8&#xD;&#xA;Cookie: __RequestVerificationToken=XYp2R7FZR8xxfs2O1YLdWkOE04jdGFQmGAjJSeyFh4vzsE3be9lrtcgxBm-rAVfAbA__LCkwL7IdcD83QwYLJvd8xIjAWzF1XFcALijIqzkuCVS_zkNyx99yfGFrGczrRBe1x9FXUikMR8xlH-R--g2; ASP.NET_SessionId=phdldxcyggij1o414hf4szxd&#xD;&#xA;Host: localhost:52919&#xD;&#xA;Referer: http://localhost:52919/Account/Login&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.22 (KHTML, like Gecko) Chrome/25.0.1364.172 Safari/537.22&#xD;&#xA;Origin: http://localhost:52919&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="C:\Users\MaGiC\Documents\Visual Studio 2010\Projects\eUp_GIT\eUp\eUp\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="*****" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="MaGiC-PC\MaGiC" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="216" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="application/x-www-form-urlencoded" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="" />
+    </item>
+    <item name="HTTPS">
+      <value string="" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/Account/ExternalLogin" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="C:\Users\MaGiC\Documents\Visual Studio 2010\Projects\eUp_GIT\eUp\eUp\Account\ExternalLogin" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="ReturnUrl=" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="POST" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/Account/ExternalLogin" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="localhost" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="52919" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="0" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="" />
+    </item>
+    <item name="URL">
+      <value string="/Account/ExternalLogin" />
+    </item>
+    <item name="HTTP_CACHE_CONTROL">
+      <value string="max-age=0" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="keep-alive" />
+    </item>
+    <item name="HTTP_CONTENT_LENGTH">
+      <value string="216" />
+    </item>
+    <item name="HTTP_CONTENT_TYPE">
+      <value string="application/x-www-form-urlencoded" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8" />
+    </item>
+    <item name="HTTP_ACCEPT_CHARSET">
+      <value string="ISO-8859-1,utf-8;q=0.7,*;q=0.3" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip,deflate,sdch" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="en-US,en;q=0.8" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="__RequestVerificationToken=XYp2R7FZR8xxfs2O1YLdWkOE04jdGFQmGAjJSeyFh4vzsE3be9lrtcgxBm-rAVfAbA__LCkwL7IdcD83QwYLJvd8xIjAWzF1XFcALijIqzkuCVS_zkNyx99yfGFrGczrRBe1x9FXUikMR8xlH-R--g2; ASP.NET_SessionId=phdldxcyggij1o414hf4szxd" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="localhost:52919" />
+    </item>
+    <item name="HTTP_REFERER">
+      <value string="http://localhost:52919/Account/Login" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.22 (KHTML, like Gecko) Chrome/25.0.1364.172 Safari/537.22" />
+    </item>
+    <item name="HTTP_ORIGIN">
+      <value string="http://localhost:52919" />
+    </item>
+  </serverVariables>
+  <queryString>
+    <item name="ReturnUrl">
+      <value string="" />
+    </item>
+  </queryString>
+  <form>
+    <item name="__RequestVerificationToken">
+      <value string="Xf8LPnIlIHR6F5Wd9-JgUIaKV1qujER9gSV3a8q6VL54Y7jm8GdF6QBBZKO_qebjNddvoiUMItCJOdGombw09a3rLR2WseAexQqIruGRAQ0TBV8LzGsJD57ChIMN6DOk5O-p0PRuav1qX_0eTk4xx42K9aMlbw8Sbkl288_WLyw1" />
+    </item>
+    <item name="provider">
+      <value string="twitter" />
+    </item>
+  </form>
+  <cookies>
+    <item name="__RequestVerificationToken">
+      <value string="XYp2R7FZR8xxfs2O1YLdWkOE04jdGFQmGAjJSeyFh4vzsE3be9lrtcgxBm-rAVfAbA__LCkwL7IdcD83QwYLJvd8xIjAWzF1XFcALijIqzkuCVS_zkNyx99yfGFrGczrRBe1x9FXUikMR8xlH-R--g2" />
+    </item>
+    <item name="ASP.NET_SessionId">
+      <value string="phdldxcyggij1o414hf4szxd" />
+    </item>
+    <item name="__csid__">
+      <value string="JKeV10a1TbAE-UDOAGok_WXa4n5pA94FkZa3ygaxmOiVhazMTop3y90KK2_-2_gm2_g2cqCsz7rsrHS9HwODRlfy-XnpMzsoVcPtRNaeSP8dLMfhvnFr5gah3DazGR_ns48xntyEgIqf6_PVnFv51Zso2WYzfiTj2S4zWCUPZ7o1" />
+    </item>
+  </cookies>
+</error>

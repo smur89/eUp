@@ -21,7 +21,14 @@ namespace eUp.Controllers
     {
         //create an instance of a database
         private eUpDbContext context = new eUpDbContext();
-        
+
+        [Authorize(Roles="Administrator")]
+        public ActionResult AdminIndex()
+        {
+            IEnumerable<UserTable> users = context.UserTables.Include(u => u.Fields);
+            return View(users);
+        }
+
         //default action
         // GET: /UserTables/
         public ActionResult Index()
@@ -39,6 +46,8 @@ namespace eUp.Controllers
             IEnumerable<UserTable> tables = context.UserTables.Where(x => x.UserId == id);
             //calls a method to check if tables have been submitted
             MatchTables(tables);
+            bool b = System.Web.Security.Roles.Enabled;
+            System.Diagnostics.Debug.Write(b);
             return View(context.UserTables.Where(x => x.UserId == id));
         }
 

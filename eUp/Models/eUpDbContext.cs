@@ -29,5 +29,7 @@ namespace eUp.Models
         public DbSet<eUp.Models.UserTable> UserTables { get; set; }
 
         public DbSet<eUp.Models.Field> Fields { get; set; }
+
+        public DbSet<ExternalUserInformation> ExternalUsers { get; set; }
     }
 }

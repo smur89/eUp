@@ -422,6 +422,7 @@
     <Content Include="Views\Shared\Error.Mobile.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.Mobile.cshtml" />
     <Content Include="Views\_ViewStart.Mobile.cshtml" />
+    <Content Include="Views\UserTables\AdminIndex.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -1,0 +1,168 @@
+﻿<error errorId="5f9676e8-ee8e-44eb-8fdb-c8580d93d8c4" application="/LM/W3SVC/7/ROOT" host="MAGIC-PC" type="System.ArgumentException" message="Value cannot be null or empty.&#xD;&#xA;Parameter name: linkText" source="System.Web.Mvc" detail="System.ArgumentException: Value cannot be null or empty.&#xD;&#xA;Parameter name: linkText&#xD;&#xA;   at System.Web.Mvc.Html.LinkExtensions.ActionLink(HtmlHelper htmlHelper, String linkText, String actionName, String controllerName, RouteValueDictionary routeValues, IDictionary`2 htmlAttributes)&#xD;&#xA;   at System.Web.Mvc.Html.LinkExtensions.ActionLink(HtmlHelper htmlHelper, String linkText, String actionName, Object routeValues)&#xD;&#xA;   at ASP._Page_Views_UserTables_ListTable_cshtml.Execute() in c:\Users\MaGiC\Documents\Visual Studio 2010\Projects\eUp_GIT\eUp\eUp\Views\UserTables\ListTable.cshtml:line 32&#xD;&#xA;   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy()&#xD;&#xA;   at System.Web.Mvc.WebViewPage.ExecutePageHierarchy()&#xD;&#xA;   at System.Web.WebPages.StartPage.RunPage()&#xD;&#xA;   at System.Web.WebPages.StartPage.ExecutePageHierarchy()&#xD;&#xA;   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)&#xD;&#xA;   at System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)&#xD;&#xA;   at System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)&#xD;&#xA;   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.&lt;&gt;c__DisplayClass1a.&lt;InvokeActionResultWithFilters&gt;b__17()&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.&lt;&gt;c__DisplayClass1a.&lt;&gt;c__DisplayClass1c.&lt;InvokeActionResultWithFilters&gt;b__19()&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass25.&lt;&gt;c__DisplayClass2a.&lt;BeginInvokeAction&gt;b__20()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass25.&lt;BeginInvokeAction&gt;b__22(IAsyncResult asyncResult)" user="magic" time="2013-03-14T12:56:26.1225271Z">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CONNECTION:keep-alive&#xD;&#xA;HTTP_ACCEPT:text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8&#xD;&#xA;HTTP_ACCEPT_CHARSET:ISO-8859-1,utf-8;q=0.7,*;q=0.3&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip,deflate,sdch&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:en-US,en;q=0.8&#xD;&#xA;HTTP_COOKIE:__RequestVerificationToken=-wiobj2cr4g_9yZE4uKjLG4ydCM5rVKMpuz6SqtMzzloHZfE3_dR7iJyYkHbe10vv9eBE-DtNSfGzEISAXh3b2VIlD_Nz3wepKYWBTRSEy40Lv-6MsstdEFHf4Wa9EarhrUBzBGxcRDw92ZT1UMpOQ2; .ASPXAUTH=2EF6F3E361931FD524B035FD18F1ACF85C3AE5BD8F9697A4D3AAC7FC8D502FD8A896CCF5A79EFEBE04BA025CA2187B77285945A21DEBE5ADD20B6F698F3D438FC090032A23028672F8445B26E8699B6BBED01C9C8CD2A5C8CA584D702A55FB69AF4CA9720E3B1C8EE4FB470B8EB0C0EEC874F08C4E5EE95E263E146AC8450B7E&#xD;&#xA;HTTP_HOST:10.95.29.207&#xD;&#xA;HTTP_REFERER:http://10.95.29.207/&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_2) AppleWebKit/537.22 (KHTML, like Gecko) Chrome/25.0.1364.155 Safari/537.22&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Connection: keep-alive&#xD;&#xA;Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8&#xD;&#xA;Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.3&#xD;&#xA;Accept-Encoding: gzip,deflate,sdch&#xD;&#xA;Accept-Language: en-US,en;q=0.8&#xD;&#xA;Cookie: __RequestVerificationToken=-wiobj2cr4g_9yZE4uKjLG4ydCM5rVKMpuz6SqtMzzloHZfE3_dR7iJyYkHbe10vv9eBE-DtNSfGzEISAXh3b2VIlD_Nz3wepKYWBTRSEy40Lv-6MsstdEFHf4Wa9EarhrUBzBGxcRDw92ZT1UMpOQ2; .ASPXAUTH=2EF6F3E361931FD524B035FD18F1ACF85C3AE5BD8F9697A4D3AAC7FC8D502FD8A896CCF5A79EFEBE04BA025CA2187B77285945A21DEBE5ADD20B6F698F3D438FC090032A23028672F8445B26E8699B6BBED01C9C8CD2A5C8CA584D702A55FB69AF4CA9720E3B1C8EE4FB470B8EB0C0EEC874F08C4E5EE95E263E146AC8450B7E&#xD;&#xA;Host: 10.95.29.207&#xD;&#xA;Referer: http://10.95.29.207/&#xD;&#xA;User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_2) AppleWebKit/537.22 (KHTML, like Gecko) Chrome/25.0.1364.155 Safari/537.22&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/7/ROOT" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="C:\Users\MaGiC\Documents\Visual Studio 2010\Projects\eUp_GIT\eUp\eUp\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="Forms" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="magic" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="*****" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="magic" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="magic" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="0" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="off" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="7" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/7" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="10.95.29.207" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/UserTables/ListTable" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="C:\Users\MaGiC\Documents\Visual Studio 2010\Projects\eUp_GIT\eUp\eUp\UserTables\ListTable" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="10.95.29.205" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="10.95.29.205" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="12810" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="GET" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/UserTables/ListTable" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="10.95.29.207" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="80" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="0" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/8.0" />
+    </item>
+    <item name="URL">
+      <value string="/UserTables/ListTable" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="keep-alive" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8" />
+    </item>
+    <item name="HTTP_ACCEPT_CHARSET">
+      <value string="ISO-8859-1,utf-8;q=0.7,*;q=0.3" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip,deflate,sdch" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="en-US,en;q=0.8" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="__RequestVerificationToken=-wiobj2cr4g_9yZE4uKjLG4ydCM5rVKMpuz6SqtMzzloHZfE3_dR7iJyYkHbe10vv9eBE-DtNSfGzEISAXh3b2VIlD_Nz3wepKYWBTRSEy40Lv-6MsstdEFHf4Wa9EarhrUBzBGxcRDw92ZT1UMpOQ2; .ASPXAUTH=2EF6F3E361931FD524B035FD18F1ACF85C3AE5BD8F9697A4D3AAC7FC8D502FD8A896CCF5A79EFEBE04BA025CA2187B77285945A21DEBE5ADD20B6F698F3D438FC090032A23028672F8445B26E8699B6BBED01C9C8CD2A5C8CA584D702A55FB69AF4CA9720E3B1C8EE4FB470B8EB0C0EEC874F08C4E5EE95E263E146AC8450B7E" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="10.95.29.207" />
+    </item>
+    <item name="HTTP_REFERER">
+      <value string="http://10.95.29.207/" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_2) AppleWebKit/537.22 (KHTML, like Gecko) Chrome/25.0.1364.155 Safari/537.22" />
+    </item>
+  </serverVariables>
+  <cookies>
+    <item name="__RequestVerificationToken">
+      <value string="-wiobj2cr4g_9yZE4uKjLG4ydCM5rVKMpuz6SqtMzzloHZfE3_dR7iJyYkHbe10vv9eBE-DtNSfGzEISAXh3b2VIlD_Nz3wepKYWBTRSEy40Lv-6MsstdEFHf4Wa9EarhrUBzBGxcRDw92ZT1UMpOQ2" />
+    </item>
+    <item name=".ASPXAUTH">
+      <value string="2EF6F3E361931FD524B035FD18F1ACF85C3AE5BD8F9697A4D3AAC7FC8D502FD8A896CCF5A79EFEBE04BA025CA2187B77285945A21DEBE5ADD20B6F698F3D438FC090032A23028672F8445B26E8699B6BBED01C9C8CD2A5C8CA584D702A55FB69AF4CA9720E3B1C8EE4FB470B8EB0C0EEC874F08C4E5EE95E263E146AC8450B7E" />
+    </item>
+  </cookies>
+</error>
