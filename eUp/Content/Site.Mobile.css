@@ -1,44 +1,29 @@
-﻿/* Styles for validation helpers
------------------------------------------------------------*/
+﻿.view-switcher {
+    padding: 0.5em; 
+    font-weight: normal;
+}
+
+/* styles for validation helpers */
 .field-validation-error {
-    color: #f00;
-    display: block;
-    margin-top: 8px;
-    text-align: center;
+    color: #e80c4d;
+    font-weight: bold;
 }
 
 .field-validation-valid {
     display: none;
 }
 
-.input-validation-error {
-    border: 1px solid #f00;
-    background-color: #fee;
+input[type="text"].input-validation-error,
+input[type="password"].input-validation-error {
+    border: solid 1px #e80c4d;
 }
 
 .validation-summary-errors {
+    color: #e80c4d;
     font-weight: bold;
-    color: #f00;
+    font-size: 1.1em;
 }
 
 .validation-summary-valid {
     display: none;
-}
-
-
-/* jQuery mobile styles
------------------------------------------------------------*/
-
-/* Make listview buttons fill the whole horizontal width of the screen */
-.ui-li .ui-btn-inner a.ui-link-inherit, .ui-li-static.ui-li {
-    padding-right: 15px;
-}
-
-.ui-bar-a, .ui-body-a, .ui-btn-up-a, .ui-btn-hover-a, .ui-btn-down-a,
-.ui-bar-b, .ui-body-b, .ui-btn-up-b, .ui-btn-hover-b, .ui-btn-down-b,
-.ui-bar-c, .ui-body-c, .ui-btn-up-c, .ui-btn-hover-c, .ui-btn-down-c,
-.ui-bar-d, .ui-body-d, .ui-btn-up-d, .ui-btn-hover-d, .ui-btn-down-d,
-.ui-bar-e, .ui-body-e, .ui-btn-up-e, .ui-btn-hover-e, .ui-btn-down-e,
-.ui-btn-active  {
-    text-shadow: none;
 }

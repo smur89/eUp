@@ -289,15 +289,12 @@
     <Content Include="Scripts\jquery-1.7.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
-    <Content Include="Scripts\jquery-1.9.1-vsdoc.js" />
-    <Content Include="Scripts\jquery-1.9.1.js" />
-    <Content Include="Scripts\jquery-1.9.1.min.js" />
     <Content Include="Scripts\jquery-ui-1.8.20.js" />
     <Content Include="Scripts\jquery-ui-1.8.20.min.js" />
     <Content Include="Scripts\jquery.mobile-1.1.0.js" />
     <Content Include="Scripts\jquery.mobile-1.1.0.min.js" />
-    <Content Include="Scripts\jquery.mobile-1.1.1.js" />
-    <Content Include="Scripts\jquery.mobile-1.1.1.min.js" />
+    <Content Include="Scripts\jquery.mobile-1.1.1.css" />
+    <Content Include="Scripts\jquery.mobile-1.1.1.min.css" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate-vsdoc.js" />
@@ -409,8 +406,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Scripts\jquery-1.9.1.min.map" />
-    <Content Include="Views\Shared\_ViewSwitcher.cshtml" />
-    <Content Include="Views\Shared\_Layout.Mobile.cshtml" />
     <Content Include="Views\Home\Index.Mobile.cshtml" />
     <Content Include="Views\Account\ChangePassword.Mobile.cshtml" />
     <Content Include="Views\Account\ChangePasswordSuccess.Mobile.cshtml" />
@@ -423,6 +418,8 @@
     <Content Include="Views\Shared\_LoginPartial.Mobile.cshtml" />
     <Content Include="Views\_ViewStart.Mobile.cshtml" />
     <Content Include="Views\UserTables\AdminIndex.cshtml" />
+    <Content Include="Views\Shared\_ViewSwitcher.cshtml" />
+    <Content Include="Views\Shared\_Layout.Mobile.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
