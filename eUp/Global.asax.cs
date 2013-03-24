@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using Elmah;
+using System.Web.WebPages;
 
 namespace eUp
 {
@@ -24,6 +25,13 @@ namespace eUp
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
             BundleMobileConfig.RegisterBundles(BundleTable.Bundles);
+
+            /*DisplayModeProvider.Instance.Modes.Insert(0,
+                new DefaultDisplayMode("Mobile")
+                {
+                    ContextCondition = (c => (c.GetOverriddenUserAgent() != null) && c.Request.Browser.IsMobileDevice)
+                });
+             */
         }
 
         // ELMAH Filtering
