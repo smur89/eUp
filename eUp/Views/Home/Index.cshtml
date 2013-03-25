@@ -1,25 +1,30 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
+
+<script type="text/javascript" src="../../Content/jsImgSlider/themes/8/js-image-slider.js"></script>
+
+
 @section featured {
+
+
+            <div id="slider">
+                <img src="../../Content/jsImgSlider/images/image-slider-1.jpg" alt="I want to make this the full width of the paper, resizing with the page (slide 1)" />
+                <img src="../../Content/jsImgSlider/images/image-slider-2.jpg" alt="I want to make this the full width of the paper, resizing with the page (slide 2)" />
+                <a href="http://www.menucool.com"><img src="../../Content/jsImgSlider/images/image-slider-3.jpg" alt="I want to make this the full width of the paper, resizing with the page (slide 3)"/></a>
+                <img src="../../Content/jsImgSlider/images/image-slider-4.jpg" alt="I want to make this the full width of the paper, resizing with the page (slide 4)" />
+                <img src="../../Content/jsImgSlider/images/image-slider-5.jpg" alt="I want to make this the full width of the paper, resizing with the page (slide 5)" />
+            </div>
+
     <section class="featured">
         <div class="content-wrapper">
             <hgroup class="title">
                 <h1>@ViewBag.Title.</h1>
                 <h2>@ViewBag.Message</h2>
             </hgroup>
-            <p>
-                To learn more about ASP.NET MVC visit
-                <a href="http://asp.net/mvc" title="ASP.NET MVC Website">http://asp.net/mvc</a>.
-                The page features <mark>videos, tutorials, and samples</mark> to help you get the most from ASP.NET MVC.
-                If you have any questions about ASP.NET MVC visit
-                <a href="http://forums.asp.net/1146.aspx/1?MVC" title="ASP.NET MVC Forum">our forums</a>.
-            </p>
         </div>
     </section>
 }
-<h3>We suggest the following:</h3>
-<h2>@ViewContext.HttpContext.GetOverriddenBrowser().IsMobileDevice</h2>
 <ol class="round">
     <li class="one">
         <h5>Getting Started</h5>
