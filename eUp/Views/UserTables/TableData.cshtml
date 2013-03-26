@@ -2,7 +2,9 @@
 @using System.Data; 
 
 <h2>Table Data</h2> 
-
+<p>
+    @Html.ActionLink("Export", "ExportCSV", new { id = WebSecurity.CurrentUserId, tableId =  ViewBag.tableId})
+</p>
 <table> 
     <thead> 
     <tr> 

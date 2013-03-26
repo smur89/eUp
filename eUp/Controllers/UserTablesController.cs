@@ -288,6 +288,7 @@ namespace eUp.Controllers
         //returns all user form data
         public ViewResult TableData(int id, int tableId)
         {
+            ViewBag.tableId = tableId;
             //Sql connection established
             SqlConnection con = new SqlConnection();
             con.ConnectionString = @"Data Source=.\sqlexpress;Initial Catalog=UserTablesDb;Integrated Security=True";

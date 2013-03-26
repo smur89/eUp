@@ -10,7 +10,7 @@ namespace eUp.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
+            ViewBag.Message = "The simple way to collect all types of data from clients and potential clients";
 
             return View();
         }

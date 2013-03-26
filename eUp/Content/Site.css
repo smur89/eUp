@@ -272,12 +272,6 @@ ul#menu li.red a
 ----------------------------------------------------------*/
 /* featured */
 .featured {
-    /*background-color: #7ac0da;
-    background-image: -ms-linear-gradient(left, #7ac0da 0%, #a4d4e6 100%);
-    background-image: -o-linear-gradient(left, #7ac0da 0%, #a4d4e6 100%);
-    background-image: -webkit-gradient(linear, left top, right top, color-stop(0, #7ac0da), color-stop(1, #a4d4e6));
-    background-image: -webkit-linear-gradient(left, #7ac0da 0%, #a4d4e6 100%);
-    background-image: linear-gradient(left, #7ac0da 0%, #a4d4e6 100%);*/
     color: #3e5667;
     padding: 40px 40px 5px 95px;
 }
@@ -593,7 +587,7 @@ table {
     border-spacing: 0;
     margin-left:15px;
     margin-right:auto;
-    margin-top: 0.75em;
+    margin-top: 1.75em;
     border: 0 none;
 }
 
@@ -608,7 +602,7 @@ th
 	letter-spacing: 2px;
 	text-transform: uppercase;
 	text-align: left;
-	padding: 6px 6px 6px 12px;
+	padding: 3px 3px 3px 12px;
 	background: #F0E6AC;
 }
 
@@ -653,7 +647,7 @@ td
     border-right: 1px solid #00CED1;
 	border-bottom: 1px solid #00CED1;
 	background: #FFFAF0;
-	padding: 6px 6px 6px 12px;
+	padding: 2px 2px 2px 12px;
 	color: #6D929B;
 }
 
