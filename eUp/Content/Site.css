@@ -591,7 +591,7 @@ input[type="checkbox"].input-validation-error {
 table {
     border-collapse: collapse;
     border-spacing: 0;
-    margin-left:100px;
+    margin-left:15px;
     margin-right:auto;
     margin-top: 0.75em;
     border: 0 none;
@@ -856,7 +856,7 @@ footer .content-wrapper .float-left p {
     margin-left: auto;
     margin-right:auto;
 	position:relative;
-    box-shadow: 0px 1px 5px #999999;
+    box-shadow: 2px 2px 6px #111;
 }
 #slider img {
 	position:absolute;
