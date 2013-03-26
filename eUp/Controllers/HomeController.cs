@@ -17,14 +17,15 @@ namespace eUp.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your app description page.";
+            ViewBag.Message = "This is a 3rd Year Computing project submission for the Institute of Technology, Tallaght." +
+                " It was also entered into Microsoft's Imagine Cup 2013";
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "You can get in contact in the following ways:";
 
             return View();
         }
