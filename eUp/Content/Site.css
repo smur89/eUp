@@ -123,7 +123,7 @@ h5, h6 {
 
     .main-content {
         /*background: url("../Images/accent.png") no-repeat;*/
-        padding-left: 10px;
+        padding-left: 90px;
         padding-top: 30px;
     }
 
@@ -250,15 +250,18 @@ ul#menu
 
         .featured hgroup.title h1, .featured hgroup.title h2 {
             color: #000;
+            
         }
 
         .featured p {
             font-size: 1.1em;
+            
         }
 
 /* page titles */
 hgroup.title {
     margin-bottom: 0px;
+    padding-left:30px;
 }
 
 hgroup.title h1, hgroup.title h2 {
@@ -415,7 +418,7 @@ aside {
 }
 
 .contact iframe {
-    border: 1px solid #333;
+    border: 1px solid #333;z
     margin: 5px 0 0 10px;
 }
 
