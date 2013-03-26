@@ -591,15 +591,25 @@ input[type="checkbox"].input-validation-error {
 table {
     border-collapse: collapse;
     border-spacing: 0;
+    margin-left:100px;
+    margin-right:auto;
     margin-top: 0.75em;
     border: 0 none;
 }
 
-th {
-    font-size: 1.2em;
-    text-align: left;
-    border: none 0px;
-    padding-left: 0;
+th 
+{
+    font: bold 11px "Trebuchet MS", Verdana, Arial, Helvetica,
+	sans-serif;
+	color: #000;
+	border-right: 1px solid #00CED1;
+	border-bottom: 3px double  #00CED1;
+	border-top: 1px solid #C1DAD7;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	text-align: left;
+	padding: 6px 6px 6px 12px;
+	background: #F0E6AC;
 }
 
     th a {
@@ -638,9 +648,13 @@ th {
         content: '▼';
     }
 
-td {
-    padding: 0.25em 2em 0.25em 0em;
-    border: 0 none;
+td 
+{
+    border-right: 1px solid #00CED1;
+	border-bottom: 1px solid #00CED1;
+	background: #FFFAF0;
+	padding: 6px 6px 6px 12px;
+	color: #6D929B;
 }
 
 tr.pager td {
@@ -818,6 +832,7 @@ tr.pager td {
 
 footer .content-wrapper .float-left p {
     padding-left:30px;
+    padding-top: 3px;
 }
 
 
