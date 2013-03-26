@@ -212,9 +212,8 @@ ul#menu
     font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
     font-size: 1.3em;
     font-weight: 600;
-    margin: 0 0 5px;
-    padding: 0;
-    text-align: right;
+
+    text-align: center;
 }
 
     ul#menu li {
@@ -226,7 +225,6 @@ ul#menu
         ul#menu li a {
             color: #999;
             text-decoration: none;
-            background: Pink;
             font-size: 15px;
             line-height: 40px;
             height: 40px;
@@ -239,7 +237,6 @@ ul#menu
             letter-spacing: 1px;
             text-transform: uppercase;
             font-weight: bold;
-            text-align: center;
             text-shadow: 1px 1px 1px rgba(255,255,255,0.3);
             border-radius: 3px 3px 0 0;
             box-shadow: 2px 0 2px rgba(0,0,0,0.1), -2px 0 2px rgba(0,0,0,0.1);
@@ -250,20 +247,24 @@ ul#menu
             text-decoration: none;
         }
         
-ul#menu li.yellow a {
-    background: PaleGoldenRod;
+ul#menu li.yellow a 
+{
+    background-image: -webkit-linear-gradient(top, #EEE8AA 50%, #DAA520 180%);
     }
     
-ul#menu li.blue a {
-    background: PowderBlue;
+ul#menu li.blue a 
+{
+    background-image: -webkit-linear-gradient(top, #B0E0E6 50%, #DAA520 180%);   
     }
     
-ul#menu li.green a {
-    background: DarkSeaGreen;
+ul#menu li.green a 
+{
+    background-image: -webkit-linear-gradient(top, #9FBC8F 50%, #DAA520 180%); 
     }
     
-ul#menu li.red a {
-    background: LightCoral;
+ul#menu li.red a 
+{
+    background-image: -webkit-linear-gradient(top, #F08080 50%, #DAA520 180%); 
     }
 
 
@@ -278,7 +279,7 @@ ul#menu li.red a {
     background-image: -webkit-linear-gradient(left, #7ac0da 0%, #a4d4e6 100%);
     background-image: linear-gradient(left, #7ac0da 0%, #a4d4e6 100%);*/
     color: #3e5667;
-    padding: 20px 40px 5px 40px;
+    padding: 40px 40px 5px 95px;
 }
 
         .featured hgroup.title h1, .featured hgroup.title h2 {
@@ -294,7 +295,6 @@ ul#menu li.red a {
 /* page titles */
 hgroup.title {
     margin-bottom: 0px;
-    padding-left:30px;
 }
 
 hgroup.title h1, hgroup.title h2 {
