@@ -829,8 +829,38 @@ footer .content-wrapper .float-left p {
     padding-top: 3px;
 }
 
+/* Form buttons
+----------------------------------------------------------*/
 
-/*Slider---------------------------------------------------*/
+body .content-wrapper a.exportCSV
+{
+     background: url(../../Images/csv-small.png) no-repeat top left;
+     display: inline-block;
+     width: 20px;
+     height: 20px;
+     text-indent: -9999px; /* hides the link text */
+}  
+
+body .content-wrapper a.deleteButton
+{
+     background: url(../../Images/DeleteIcon-small.png) no-repeat top left;
+     display: inline-block;
+     width: 20px;
+     height: 20px;
+     text-indent: -9999px; /* hides the link text */
+}    
+
+body .content-wrapper a.formButton
+{
+     background: url(../../Images/formIcon-small.png) no-repeat top left;
+     display: inline-block;
+     width: 20px;
+     height: 20px;
+     text-indent: -9999px; /* hides the link text */
+}
+
+/*Slider
+----------------------------------------------------------*/
 
 /* http://www.menucool.com */
 

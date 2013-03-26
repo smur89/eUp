@@ -2,9 +2,9 @@
 @using System.Data; 
 
 <h2>Table Data</h2> 
-<p>
-    @Html.ActionLink("Export", "ExportCSV", new { id = WebSecurity.CurrentUserId, tableId =  ViewBag.tableId})
-</p>
+@Html.ActionLink("Export", "ExportCSV", new { id = WebSecurity.CurrentUserId, tableId = ViewBag.tableId }, new { @class = "exportCSV" })
+@*@Html.ActionLink("Export", "ExportXML", new { id = WebSecurity.CurrentUserId, tableId = ViewBag.tableId }, new { @class = "exportXML" })*@
+
 <table> 
     <thead> 
     <tr> 

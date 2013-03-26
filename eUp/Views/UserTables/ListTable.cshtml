@@ -31,12 +31,13 @@
         <td>
             @Html.ActionLink(item.TableName, "TableData", new { id = item.UserId, tableId = item.UserTableId })
         </td>
-        <td>
-            @Html.ActionLink("Delete", "Delete", new { id=item.UserTableId })
+        <td  class = "listTable">
+            @Html.ActionLink("Delete", "Delete", new { id = item.UserTableId }, new { @class = "deleteButton" })
             @if(ViewBag.TableMatch[i++])
             {
-                @Html.ActionLink("User View", "FillTable", new { id = item.UserId, tableId = item.UserTableId })
-                @Html.ActionLink("Export", "ExportCSV", new { id = item.UserId, tableId = item.UserTableId })
+                @Html.ActionLink("User View", "FillTable", new { id = item.UserId, tableId = item.UserTableId }, new { @class = "formButton" })
+                @Html.ActionLink("Export", "ExportCSV", new { id = item.UserId, tableId = item.UserTableId }, new { @class = "exportCSV" })
+
             }
             else
             {
