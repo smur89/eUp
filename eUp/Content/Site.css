@@ -816,6 +816,10 @@ tr.pager td {
         }
 }
 
+footer .content-wrapper .float-left p {
+    padding-left:30px;
+}
+
 
 /*Slider---------------------------------------------------*/
 
