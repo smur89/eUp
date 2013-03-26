@@ -23,16 +23,16 @@
                         <ul id="menu">
                     @if (Request.IsAuthenticated)
                     {
-                            <li id="Forms">@Html.ActionLink("My Forms", "ListTable", "UserTables")</li>
-                            <li id="Home">@Html.ActionLink("Home", "Index", "Home")</li>
-                            <li id="About">@Html.ActionLink("About", "About", "Home")</li>
-                            <li id="Contact">@Html.ActionLink("Contact", "Contact", "Home")</li>
+                            <li class="green">@Html.ActionLink("Forms", "ListTable", "UserTables")</li>
+                            <li class="red">@Html.ActionLink("Home", "Index", "Home")</li>
+                            <li class="yellow">@Html.ActionLink("About", "About", "Home")</li>
+                            <li class="blue">@Html.ActionLink("Contact", "Contact", "Home")</li>
                     }
                     else
                     {
-                            <li id="Home">@Html.ActionLink("Home", "Index", "Home")</li>
-                            <li id="About">@Html.ActionLink("About", "About", "Home")</li>
-                            <li id="Contact">@Html.ActionLink("Contact", "Contact", "Home")</li>
+                            <li class="red">@Html.ActionLink("Home", "Index", "Home")</li>
+                            <li class="yellow" >@Html.ActionLink("About", "About", "Home")</li>
+                            <li class="blue">@Html.ActionLink("Contact", "Contact", "Home")</li>
                     }
                         </ul>
                     </nav>
