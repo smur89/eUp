@@ -223,11 +223,29 @@ ul#menu
     }
 
         ul#menu li a {
-            background: none;
+
             color: #999;
             text-decoration: none;
+            
+            background: Pink;
+            font-size: 15px;
+            line-height: 40px;
+            height: 40px;
+            position: relative;
+            padding: 0 20px;
+            float: right;
+            display: block;
+            width: 80px;
+            color: #385c5b;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-weight: bold;
+            text-align: center;
+            text-shadow: 1px 1px 1px rgba(255,255,255,0.3);
+            border-radius: 3px 3px 0 0;
+            box-shadow: 2px 0 2px rgba(0,0,0,0.1), -2px 0 2px rgba(0,0,0,0.1);
         }
-
+        
         ul#menu li a:hover {
             color: #333;
             text-decoration: none;
