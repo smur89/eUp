@@ -220,7 +220,7 @@ ul#menu
         display: inline;
         float: right;
         list-style: none;
-        padding-left: 15px;
+        padding-left: 0px;
     }
 
         ul#menu li a {
