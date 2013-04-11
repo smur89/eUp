@@ -859,6 +859,15 @@ body .content-wrapper a.formButton
      text-indent: -9999px; /* hides the link text */
 }
 
+body .content-wrapper a.statistics
+{
+     background: url(../../Images/stats-small.png) no-repeat top left;
+     display: inline-block;
+     width: 20px;
+     height: 20px;
+     text-indent: -9999px; /* hides the link text */
+}
+
 /*Slider
 ----------------------------------------------------------*/
 

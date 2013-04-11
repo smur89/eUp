@@ -1,0 +1,41 @@
+﻿@model IEnumerable<eUp.Models.UserTable>
+
+@{
+    ViewBag.Title = "ListTable.Mobile";
+}
+
+<h2>My Forms</h2>
+
+<p>
+    @Html.ActionLink("Create New Form", "Create")
+</p>
+
+ <ul data-role="listview" data-inset="true">
+@foreach (var item in Model) {
+    <li>
+        
+            @Html.DisplayFor(modelItem => item.UserId)
+        
+        
+            @Html.ActionLink(item.TableName, "TableData", new { id = item.UserId, tableId = item.UserTableId })
+            </li>
+       @*
+
+            @Html.ActionLink("Delete", "Delete", new { id = item.UserTableId }, new { @class = "deleteButton" })
+            @if(ViewBag.TableMatch[i++])
+            {
+                @Html.ActionLink("User View", "FillTable", new { id = item.UserId, tableId = item.UserTableId }, new { @class = "formButton" })
+                @Html.ActionLink("Export", "ExportCSV", new { id = item.UserId, tableId = item.UserTableId }, new { @class = "exportCSV" })
+
+            }
+            else
+            {
+               @Html.ActionLink("Edit", "Edit", new { id = item.UserTableId })
+               @Html.ActionLink("Submit", "SaveTable", new { id = item.UserId, tableId = item.UserTableId })
+            }
+       
+    </tr>
+    *@
+}
+ </ul>
+</table>

@@ -23,14 +23,31 @@
                 } else {
                     <h1>@ViewBag.Title</h1>
                     @Html.Partial("_LoginPartial")
+
                 }
         </div>
 
         <div data-role="content">
-        <p> <b>This is a MobileView, and the JQuery is working! <i>:)</i> </b></p>
             @RenderSection("featured", false)
             @RenderBody()		
         </div>
+
+        <ul data-role="listview" data-inset="true">
+    <li data-role="list-divider">Navigation</li>
+     @if (Request.IsAuthenticated)
+     {
+            <li>@Html.ActionLink("Forms", "ListTable", "UserTables")</li>
+            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+            <li>@Html.ActionLink("About", "About", "Home")</li>
+            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+     }
+     else
+     {
+           <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+           <li>@Html.ActionLink("About", "About", "Home")</li>
+           <li>@Html.ActionLink("Home", "Index", "Home")</li>
+     }
+        </ul>
 
     </div>
      @RenderSection("scripts", false);

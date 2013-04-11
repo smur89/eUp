@@ -13,6 +13,7 @@ using System.Collections;
 using System.Data.SqlClient;
 using System.Configuration;
 using System.Text;
+using System.Web.Helpers;
  
 namespace eUp.Controllers
 {   
@@ -47,9 +48,10 @@ namespace eUp.Controllers
             //calls a method to check if tables have been submitted
             MatchTables(tables);
             bool b = System.Web.Security.Roles.Enabled;
-            System.Diagnostics.Debug.Write(b);
+           // System.Diagnostics.Debug.Write(b);
             return View(context.UserTables.Where(x => x.UserId == id));
         }
+
 
         //check 
         public void MatchTables(IEnumerable<UserTable> tables)
@@ -327,6 +329,77 @@ namespace eUp.Controllers
             }
             //pass DataTable object to a View to display data
             return View(dt);
+        }
+
+        public ActionResult MyChart()
+        {
+            string myTheme =
+                   @"<Chart BackColor=""Transparent"" >
+                                    <ChartAreas>
+                                        <ChartArea Name=""Default"" BackColor=""Transparent""></ChartArea>
+                                    </ChartAreas>
+                                </Chart>";
+
+             var chart = new Chart(width: 500, height: 300, theme: myTheme).AddSeries(
+                         chartType: "bar",
+                         xValue: new[] { "Math", "English", "Computer", "Urdu" },
+                         yValues: new[] { "60", "70", "68", "88" }).GetBytes("png");
+             return File(chart, "image/png");
+        }
+
+        //
+        // GET: /UserTables/GetStatistics(1, 7)
+        public ViewResult GetStatistics(int id, int tableId)
+        {
+            ViewBag.tableId = tableId;
+            //Sql connection established
+            SqlConnection con = new SqlConnection();
+            con.ConnectionString = @"Data Source=.\sqlexpress;Initial Catalog=UserTablesDb;Integrated Security=True";
+            con.Open();
+            //name of the user form that contain data
+            string tName = "UserTable_" + id + "_" + tableId;
+            //DataTable represent a table. Can be filled with table data
+            DataTable dt = new DataTable();
+            try
+            {
+                //return all values from user form
+                SqlCommand c = new SqlCommand("select * from " + tName, con);
+                SqlDataAdapter adapter = new SqlDataAdapter(c);
+                //execute select command
+                adapter.SelectCommand = c;
+                //fill DataTable object with form data
+                adapter.Fill(dt);
+                foreach (System.Data.DataColumn col in dt.Columns)
+                {
+                      if(col.DataType == typeof(System.Double))
+                      {
+                            string s = col.ColumnName;
+                            System.Diagnostics.Debug.Write(s);
+                            dt.Compute("Avg(" + s + ")", string.Empty);
+                      }
+                }
+               /*
+                foreach (var i in dt.AsEnumerable())
+                {
+                    var items = i.ItemArray;
+                    foreach (var v in items)
+                    {
+                        System.Diagnostics.Debug.Write(v + " ");
+                    }
+                }*/
+            }
+            catch (Exception e)
+            {
+                //print off errors to a console
+                System.Diagnostics.Debug.WriteLine(e.Message);
+                System.Diagnostics.Debug.WriteLine(e.InnerException.Message);
+                System.Diagnostics.Debug.WriteLine(e.InnerException.InnerException.Message);
+                //optional: display a page with error description
+                //return View();
+            }
+            //pass DataTable object to a View to display data
+            return View();
+           // return File(ch);
         }
 
         //
