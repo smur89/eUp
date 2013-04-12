@@ -284,7 +284,7 @@ namespace eUp.Controllers
                 //Submit values to SQL table using table name and constructed string of values
                 cmd = new SqlCommand("INSERT INTO " + tName + " VALUES ("+ tValues + ")", con);
                 cmd.ExecuteNonQuery();
-           return RedirectToAction("ListTable");
+                return RedirectToAction("Index");
         }
 
         //returns all user form data
@@ -331,27 +331,12 @@ namespace eUp.Controllers
             return View(dt);
         }
 
-        public ActionResult MyChart()
+        public ActionResult MyChart(int id, int tableId)
         {
-            string myTheme =
-                   @"<Chart BackColor=""Transparent"" >
-                                    <ChartAreas>
-                                        <ChartArea Name=""Default"" BackColor=""Transparent""></ChartArea>
-                                    </ChartAreas>
-                                </Chart>";
-
-             var chart = new Chart(width: 500, height: 300, theme: myTheme).AddSeries(
-                         chartType: "bar",
-                         xValue: new[] { "Math", "English", "Computer", "Urdu" },
-                         yValues: new[] { "60", "70", "68", "88" }).GetBytes("png");
-             return File(chart, "image/png");
-        }
-
-        //
-        // GET: /UserTables/GetStatistics(1, 7)
-        public ViewResult GetStatistics(int id, int tableId)
-        {
-            ViewBag.tableId = tableId;
+            System.Diagnostics.Debug.WriteLine(id);
+            System.Diagnostics.Debug.WriteLine(tableId);
+            List<string> colNames = new List<string>();
+            List<double> colValues = new List<double>();
             //Sql connection established
             SqlConnection con = new SqlConnection();
             con.ConnectionString = @"Data Source=.\sqlexpress;Initial Catalog=UserTablesDb;Integrated Security=True";
@@ -360,6 +345,12 @@ namespace eUp.Controllers
             string tName = "UserTable_" + id + "_" + tableId;
             //DataTable represent a table. Can be filled with table data
             DataTable dt = new DataTable();
+            string myTheme =
+                   @"<Chart BackColor=""Transparent"" >
+                                    <ChartAreas>
+                                        <ChartArea Name=""Default"" BackColor=""Transparent""></ChartArea>
+                                    </ChartAreas>
+                                </Chart>";
             try
             {
                 //return all values from user form
@@ -369,24 +360,20 @@ namespace eUp.Controllers
                 adapter.SelectCommand = c;
                 //fill DataTable object with form data
                 adapter.Fill(dt);
+                //List to be passed to MyChart()
                 foreach (System.Data.DataColumn col in dt.Columns)
                 {
-                      if(col.DataType == typeof(System.Double))
-                      {
-                            string s = col.ColumnName;
-                            System.Diagnostics.Debug.Write(s);
-                            dt.Compute("Avg(" + s + ")", string.Empty);
-                      }
-                }
-               /*
-                foreach (var i in dt.AsEnumerable())
-                {
-                    var items = i.ItemArray;
-                    foreach (var v in items)
+                    if (col.DataType == typeof(System.Double))
                     {
-                        System.Diagnostics.Debug.Write(v + " ");
+                        string s = col.ColumnName;
+                        colNames.Add(s + " Min");
+                        colValues.Add((double)dt.Compute("Min(" + s + ")", string.Empty));
+                        colNames.Add(s +" Avg");
+                        colValues.Add((double)dt.Compute("Avg(" + s + ")", string.Empty));
+                        colNames.Add(s + " Max");
+                        colValues.Add((double)dt.Compute("Max(" + s + ")", string.Empty));
                     }
-                }*/
+                }
             }
             catch (Exception e)
             {
@@ -397,9 +384,21 @@ namespace eUp.Controllers
                 //optional: display a page with error description
                 //return View();
             }
-            //pass DataTable object to a View to display data
+            var chart = new Chart(width: 500, height: 300, theme: myTheme).AddSeries(
+                       chartType: "bar",
+                       xValue: colNames,
+                       yValues: colValues).GetBytes("png");
+
+            return File(chart, "image/png");
+        }
+
+        //
+        // GET: /UserTables/GetStatistics(1, 7)
+        public ViewResult GetStatistics(int id, int tableId)
+        {
+            ViewBag.tableId = tableId;
+            ViewBag.userId = id;
             return View();
-           // return File(ch);
         }
 
         //

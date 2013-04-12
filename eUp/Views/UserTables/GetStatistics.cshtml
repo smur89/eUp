@@ -3,4 +3,4 @@
 }
 
 <h2>Statisctics</h2>
-<img src="@Url.Action("MyChart")" alt="SimpleChart" />
+<img src="@Url.Action("MyChart","UserTables",  new { id=ViewBag.userId, tableId=ViewBag.tableId})" alt="SimpleChart" />
