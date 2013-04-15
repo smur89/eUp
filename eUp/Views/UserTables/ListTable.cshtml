@@ -23,13 +23,21 @@
         int i = 0;
     }
 
-@foreach (var item in Model) {
+@foreach (var item in Model)
+{
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.UserId)
         </td>
         <td>
-            @Html.ActionLink(item.TableName, "TableData", new { id = item.UserId, tableId = item.UserTableId })
+             @if (ViewBag.TableMatch[i])
+             {
+                @Html.ActionLink(item.TableName, "TableData", new { id = item.UserId, tableId = item.UserTableId })
+             }
+             else
+             {
+                @item.TableName
+             }
         </td>
         <td  class = "listTable">
             @Html.ActionLink("Delete", "Delete", new { id = item.UserTableId }, new { @class = "deleteButton" })
