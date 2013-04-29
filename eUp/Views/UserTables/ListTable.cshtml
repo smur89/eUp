@@ -18,6 +18,7 @@
             @Html.DisplayNameFor(model => model.TableName)
         </th>
         <th></th>
+        <th>Public Access URL</th>
     </tr>
     @{
         int i = 0;
@@ -46,13 +47,16 @@
                 @Html.ActionLink("User View", "FillTable", new { id = item.UserId, tableId = item.UserTableId }, new { @class = "formButton" })
                 @Html.ActionLink("Export", "ExportCSV", new { id = item.UserId, tableId = item.UserTableId }, new { @class = "exportCSV" })
                 @Html.ActionLink("Statistics", "GetStatistics", new { id = item.UserId, tableId = item.UserTableId }, new { @class = "statistics" })
-                 <input type="url" value="localhost:52919/@ViewBag.publicUrl/@item.UserTableId" name="publicUrl" readonly="true"/>
+                 <td  class = "listTable">
+                 <input type="url" class = "publicURL" value="localhost:52919/@ViewBag.publicUrl/@item.UserTableId" name="publicUrl" readonly="true"/>
+                 </td>
             }
             else
             {
                @Html.ActionLink("Edit", "Edit", new { id = item.UserTableId })
                @Html.ActionLink("Submit", "SaveTable", new { id = item.UserId, tableId = item.UserTableId })
-            }
+               <td  class = "listTable"></td>
+             }
         </td>
     </tr>
 }

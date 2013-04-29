@@ -613,6 +613,13 @@ th
 	background: #F0E6AC;
 }
 
+.publicURL
+{
+      background: #CFFFFF; 
+    color: #333; 
+    border: 1px solid #33CCFF 
+}
+
     th a {
         display: block;
         position: relative;
