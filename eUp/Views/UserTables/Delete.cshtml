@@ -9,18 +9,18 @@
 <h3>Are you sure you want to delete this form?</h3>
 <h3>    -= All data will be lost =-</h3>
 <fieldset>
-    <legend>Table</legend>
+    @*<legend>Table</legend>
 
     <div class="display-field">@Model.TableName</div>
 
     <div class="display-label">Number of fields</div>
-    <div class="display-field">@(Model.Fields == null ? "None" : Model.Fields.Count.ToString())</div>
+    <div class="display-field">@(Model.Fields == null ? "None" : Model.Fields.Count.ToString())</div>*@
 
 </fieldset>
 @using (Html.BeginForm()) {
     <p>
         <input type="submit" value="Delete" /> |
-        @Html.ActionLink("Back to List", "ListTables")
+        @Html.ActionLink("Back to List", "ListTable")
     </p>
 }
 
