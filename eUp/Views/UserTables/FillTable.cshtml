@@ -57,12 +57,12 @@
                 </p>
                </div>
              }
-             else
+             else if (type == "bit")
              {
-                <span class="field-validation-valid" data-valmsg-for="bool" data-valmsg-replace="true"></span>
-                <p><input type="radio" name="bool" id="true" value="true" data-val="true" data-val-required="Please choose one of these options:"/>
+                <span class="field-validation-valid" data-valmsg-for="@i" data-valmsg-replace="true"></span>
+                <p><input type="radio" name="@i" id="@i" value="true" data-val="true" data-val-required="Please choose one of these options:"/>
                 <label for="true">True</label></p>
-                <p><input type="radio" name="bool" id="false" value="false"/> 
+                <p><input type="radio" name="@i" id="@i" value="false"/> 
                 <label for="false">False</label></p>
              }
          }

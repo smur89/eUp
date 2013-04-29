@@ -1,0 +1,173 @@
+﻿<error errorId="8d12f297-5083-4aa6-9e7e-cec72612dad3" application="/LM/W3SVC/7/ROOT" host="MAGIC-PC" type="System.NullReferenceException" message="Object reference not set to an instance of an object." source="eUp" detail="System.NullReferenceException: Object reference not set to an instance of an object.&#xD;&#xA;   at eUp.Controllers.UserTablesController.MyChart(Int32 id, Int32 tableId) in C:\Users\MaGiC\Documents\Visual Studio 2010\Projects\eUp_GIT\eUp\eUp\Controllers\UserTablesController.cs:line 382&#xD;&#xA;   at lambda_method(Closure , ControllerBase , Object[] )&#xD;&#xA;   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)&#xD;&#xA;   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass42.&lt;BeginInvokeSynchronousActionMethod&gt;b__41()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.&lt;&gt;c__DisplayClass8`1.&lt;BeginSynchronous&gt;b__7(IAsyncResult _)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass37.&lt;&gt;c__DisplayClass39.&lt;BeginInvokeActionMethodWithFilters&gt;b__33()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass4f.&lt;InvokeActionMethodFilterAsynchronously&gt;b__49()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass37.&lt;BeginInvokeActionMethodWithFilters&gt;b__36(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass25.&lt;&gt;c__DisplayClass2a.&lt;BeginInvokeAction&gt;b__20()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass25.&lt;BeginInvokeAction&gt;b__22(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Controller.&lt;&gt;c__DisplayClass1d.&lt;BeginExecuteCore&gt;b__18(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.&lt;&gt;c__DisplayClass4.&lt;MakeVoidDelegate&gt;b__3(IAsyncResult ar)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()&#xD;&#xA;   at System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.&lt;&gt;c__DisplayClass4.&lt;MakeVoidDelegate&gt;b__3(IAsyncResult ar)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()&#xD;&#xA;   at System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.&lt;&gt;c__DisplayClass8.&lt;BeginProcessRequest&gt;b__3(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.&lt;&gt;c__DisplayClass4.&lt;MakeVoidDelegate&gt;b__3(IAsyncResult ar)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()&#xD;&#xA;   at System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)&#xD;&#xA;   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()&#xD;&#xA;   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean&amp; completedSynchronously)" user="magic" time="2013-04-29T15:18:55.6624203Z">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CONNECTION:keep-alive&#xD;&#xA;HTTP_ACCEPT:*/*&#xD;&#xA;HTTP_ACCEPT_CHARSET:ISO-8859-1,utf-8;q=0.7,*;q=0.3&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip,deflate,sdch&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:en-US,en;q=0.8&#xD;&#xA;HTTP_COOKIE:__RequestVerificationToken=3nN-Dz2bUvzxh3UmneWPaJ81DJljQanL1zX6gdWDY8XL0YKwc0syblAoUvUakNoG8rKnwgGZQGral1OzPq3jmOepXHBu3aqhfDcZGByhZMvE9LQ38JTAfdBEiWMDg7X-PGncGm0hDnmYQvhyxLLrSw2; .ASPXAUTH=5422B697598918C057E6120BA4A7E29B4F3AA8FBD3E3B143B2595FD8AB4B01725947D300E1452A61FDE3C7EA2047AEBD29C11FCE6EB19921779232523EDDCD1120DC7D5ED94CD62ED2A0B1C561EC434814326E260A82C4556027EB7FD38285E83078833A3659937DBDD31026FA8E460C21714B1C482F7A8BD5A7E83387514ACD&#xD;&#xA;HTTP_HOST:localhost:52919&#xD;&#xA;HTTP_REFERER:http://localhost:52919/UserTables/GetStatistics/1?tableId=34&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.64 Safari/537.31&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Connection: keep-alive&#xD;&#xA;Accept: */*&#xD;&#xA;Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.3&#xD;&#xA;Accept-Encoding: gzip,deflate,sdch&#xD;&#xA;Accept-Language: en-US,en;q=0.8&#xD;&#xA;Cookie: __RequestVerificationToken=3nN-Dz2bUvzxh3UmneWPaJ81DJljQanL1zX6gdWDY8XL0YKwc0syblAoUvUakNoG8rKnwgGZQGral1OzPq3jmOepXHBu3aqhfDcZGByhZMvE9LQ38JTAfdBEiWMDg7X-PGncGm0hDnmYQvhyxLLrSw2; .ASPXAUTH=5422B697598918C057E6120BA4A7E29B4F3AA8FBD3E3B143B2595FD8AB4B01725947D300E1452A61FDE3C7EA2047AEBD29C11FCE6EB19921779232523EDDCD1120DC7D5ED94CD62ED2A0B1C561EC434814326E260A82C4556027EB7FD38285E83078833A3659937DBDD31026FA8E460C21714B1C482F7A8BD5A7E83387514ACD&#xD;&#xA;Host: localhost:52919&#xD;&#xA;Referer: http://localhost:52919/UserTables/GetStatistics/1?tableId=34&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.64 Safari/537.31&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/7/ROOT" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="C:\Users\MaGiC\Documents\Visual Studio 2010\Projects\eUp_GIT\eUp\eUp\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="Forms" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="magic" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="*****" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="magic" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="magic" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="0" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="off" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="7" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/7" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/UserTables/MyChart/1" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="C:\Users\MaGiC\Documents\Visual Studio 2010\Projects\eUp_GIT\eUp\eUp\UserTables\MyChart\1" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="tableId=34" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="65230" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="GET" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/UserTables/MyChart/1" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="localhost" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="52919" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="0" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/8.0" />
+    </item>
+    <item name="URL">
+      <value string="/UserTables/MyChart/1" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="keep-alive" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="*/*" />
+    </item>
+    <item name="HTTP_ACCEPT_CHARSET">
+      <value string="ISO-8859-1,utf-8;q=0.7,*;q=0.3" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip,deflate,sdch" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="en-US,en;q=0.8" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="__RequestVerificationToken=3nN-Dz2bUvzxh3UmneWPaJ81DJljQanL1zX6gdWDY8XL0YKwc0syblAoUvUakNoG8rKnwgGZQGral1OzPq3jmOepXHBu3aqhfDcZGByhZMvE9LQ38JTAfdBEiWMDg7X-PGncGm0hDnmYQvhyxLLrSw2; .ASPXAUTH=5422B697598918C057E6120BA4A7E29B4F3AA8FBD3E3B143B2595FD8AB4B01725947D300E1452A61FDE3C7EA2047AEBD29C11FCE6EB19921779232523EDDCD1120DC7D5ED94CD62ED2A0B1C561EC434814326E260A82C4556027EB7FD38285E83078833A3659937DBDD31026FA8E460C21714B1C482F7A8BD5A7E83387514ACD" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="localhost:52919" />
+    </item>
+    <item name="HTTP_REFERER">
+      <value string="http://localhost:52919/UserTables/GetStatistics/1?tableId=34" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.64 Safari/537.31" />
+    </item>
+  </serverVariables>
+  <queryString>
+    <item name="tableId">
+      <value string="34" />
+    </item>
+  </queryString>
+  <cookies>
+    <item name="__RequestVerificationToken">
+      <value string="3nN-Dz2bUvzxh3UmneWPaJ81DJljQanL1zX6gdWDY8XL0YKwc0syblAoUvUakNoG8rKnwgGZQGral1OzPq3jmOepXHBu3aqhfDcZGByhZMvE9LQ38JTAfdBEiWMDg7X-PGncGm0hDnmYQvhyxLLrSw2" />
+    </item>
+    <item name=".ASPXAUTH">
+      <value string="5422B697598918C057E6120BA4A7E29B4F3AA8FBD3E3B143B2595FD8AB4B01725947D300E1452A61FDE3C7EA2047AEBD29C11FCE6EB19921779232523EDDCD1120DC7D5ED94CD62ED2A0B1C561EC434814326E260A82C4556027EB7FD38285E83078833A3659937DBDD31026FA8E460C21714B1C482F7A8BD5A7E83387514ACD" />
+    </item>
+  </cookies>
+</error>

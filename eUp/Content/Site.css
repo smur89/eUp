@@ -270,6 +270,13 @@ ul#menu li.red a
 
 /* page elements
 ----------------------------------------------------------*/
+.chart
+{
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
+
+}
 /* featured */
 .featured {
     color: #3e5667;

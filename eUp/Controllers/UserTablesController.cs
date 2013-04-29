@@ -160,15 +160,15 @@ namespace eUp.Controllers
                         switch (type)
                         {
                             case "STRING": //Store in DB as Text
-                              col = new Column(uTable, name, DataType.Text);//TODO: get dataType from dropdown box
+                              col = new Column(uTable, name, DataType.Text);
                               uTable.Columns.Add(col);
                               break;
                             case "INTEGER": //Store in DB as Float
-                              col = new Column(uTable, name, DataType.Float);//TODO: get dataType from dropdown box
+                              col = new Column(uTable, name, DataType.Float);
                               uTable.Columns.Add(col);
                               break;
                             case "BOOL": //Store in DB as Bit
-                              col = new Column(uTable, name, DataType.Bit);//TODO: get dataType from dropdown box
+                              col = new Column(uTable, name, DataType.Bit);
                               uTable.Columns.Add(col);
                               break;
                            default: //Something went wrong. Oh no!
@@ -384,12 +384,86 @@ namespace eUp.Controllers
                 //optional: display a page with error description
                 //return View();
             }
-            var chart = new Chart(width: 500, height: 300, theme: myTheme).AddSeries(
+            var chartDouble = new Chart(width: 400, height: 300, theme: myTheme).AddSeries(
                        chartType: "bar",
                        xValue: colNames,
                        yValues: colValues).GetBytes("png");
+            if (colNames.ToArray<string>().Length == 0)
+            {
+                chartDouble = new Chart(width: 0, height: 0, theme: myTheme).AddSeries(
+                       chartType: "bar",
+                       xValue: colNames,
+                       yValues: colValues).GetBytes("png");
+            }
 
-            return File(chart, "image/png");
+            return File(chartDouble, "image/png");
+        }
+
+        public ActionResult MyChart2(int id, int tableId)
+        {
+            System.Diagnostics.Debug.WriteLine(id);
+            System.Diagnostics.Debug.WriteLine(tableId);
+            List<string> colNames = new List<string>();
+            List<int> colValues = new List<int>();
+            //Sql connection established
+            SqlConnection con = new SqlConnection();
+            con.ConnectionString = @"Data Source=.\sqlexpress;Initial Catalog=UserTablesDb;Integrated Security=True";
+            con.Open();
+            //name of the user form that contain data
+            string tName = "UserTable_" + id + "_" + tableId;
+            //DataTable represent a table. Can be filled with table data
+            DataTable dt = new DataTable();
+            string myTheme =
+                   @"<Chart BackColor=""Transparent"" >
+                                    <ChartAreas>
+                                        <ChartArea Name=""Default"" BackColor=""Transparent""></ChartArea>
+                                    </ChartAreas>
+                                </Chart>";
+            try
+            {
+                //return all values from user form
+                SqlCommand c = new SqlCommand("select * from " + tName, con);
+                SqlDataAdapter adapter = new SqlDataAdapter(c);
+                //execute select command
+                adapter.SelectCommand = c;
+                //fill DataTable object with form data
+                adapter.Fill(dt);
+                //List to be passed to MyChart()
+                foreach (System.Data.DataColumn col in dt.Columns)
+                {
+                    if (col.DataType == typeof(System.Boolean))
+                    {
+                        string s = col.ColumnName;
+                        colNames.Add(s + " True");
+                        colValues.Add((int)dt.Compute("COUNT(" + s + ")", s+" = true"));
+                        colNames.Add(s + " False");
+                        colValues.Add((int)dt.Compute("COUNT(" + s + ")", s+" = false"));
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                //print off errors to a console
+                System.Diagnostics.Debug.WriteLine(e.Message);
+                System.Diagnostics.Debug.WriteLine(e.InnerException.Message);
+                System.Diagnostics.Debug.WriteLine(e.InnerException.InnerException.Message);
+                //optional: display a page with error description
+                //return View();
+            }
+            var chartBool = new Chart(width: 300, height: 300, theme: myTheme).AddSeries(
+                       chartType: "pie",
+                       xValue: colNames,
+                       yValues: colValues).GetBytes("png");
+
+            if (colNames.ToArray<string>().Length == 0)
+            {
+                chartBool = new Chart(width: 0, height: 0, theme: myTheme).AddSeries(
+                       chartType: "bar",
+                       xValue: colNames,
+                       yValues: colValues).GetBytes("png");
+            }
+
+            return File(chartBool, "image/png");
         }
 
         //
