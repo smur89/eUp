@@ -45,9 +45,10 @@ namespace eUp.Controllers
             System.Web.Security.MembershipUser user = System.Web.Security.Membership.GetUser();
             int id = (int)user.ProviderUserKey;
             IEnumerable<UserTable> tables = context.UserTables.Where(x => x.UserId == id);
+            ViewBag.publicUrl = "public/form/" + user;
             //calls a method to check if tables have been submitted
             MatchTables(tables);
-            bool b = System.Web.Security.Roles.Enabled;
+            //bool b = System.Web.Security.Roles.Enabled;
            // System.Diagnostics.Debug.Write(b);
             return View(context.UserTables.Where(x => x.UserId == id));
         }
@@ -244,7 +245,7 @@ namespace eUp.Controllers
                 colNames.Remove("Date Submited");
                 colTypes.RemoveAt(0);
             }
-            //use ViewBag to pass column names and table name to a View
+            //use ViewBag to pass column names and table name to a ViewFlidt
             ViewBag.Columns = colNames;
             ViewBag.ColumnTypes = colTypes;
             ViewBag.TableName = ("UserTable_" + id + "_" + tableId);

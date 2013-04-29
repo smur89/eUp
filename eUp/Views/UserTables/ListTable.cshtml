@@ -46,7 +46,7 @@
                 @Html.ActionLink("User View", "FillTable", new { id = item.UserId, tableId = item.UserTableId }, new { @class = "formButton" })
                 @Html.ActionLink("Export", "ExportCSV", new { id = item.UserId, tableId = item.UserTableId }, new { @class = "exportCSV" })
                 @Html.ActionLink("Statistics", "GetStatistics", new { id = item.UserId, tableId = item.UserTableId }, new { @class = "statistics" })
-
+                 <input type="url" value="localhost:52919/@ViewBag.publicUrl/@item.UserTableId" name="publicUrl" readonly="true"/>
             }
             else
             {
