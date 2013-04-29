@@ -439,6 +439,7 @@
     <Content Include="Views\UserTables\ListTable.Mobile.cshtml" />
     <Content Include="Views\Account\Manage.Mobile.cshtml" />
     <Content Include="Views\UserTables\GetStatistics.cshtml" />
+    <Content Include="Views\UserTables\FillTable.Mobile.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

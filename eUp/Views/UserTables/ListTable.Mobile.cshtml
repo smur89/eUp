@@ -6,19 +6,14 @@
 
 <h2>My Forms</h2>
 
-<p>
-    @Html.ActionLink("Create New Form", "Create")
-</p>
-
  <ul data-role="listview" data-inset="true">
 @foreach (var item in Model) {
     <li>
-        
-            @Html.DisplayFor(modelItem => item.UserId)
-        
-        
-            @Html.ActionLink(item.TableName, "TableData", new { id = item.UserId, tableId = item.UserTableId })
-            </li>
+     
+        @Html.ActionLink(item.TableName, "TableData", new { id = item.UserId, tableId = item.UserTableId })
+        @Html.ActionLink("Statistics", "GetStatistics", new { id = item.UserId, tableId = item.UserTableId })
+        @Html.ActionLink("User View", "FillTable", new { id = item.UserId, tableId = item.UserTableId })
+    </li>
        @*
 
             @Html.ActionLink("Delete", "Delete", new { id = item.UserTableId }, new { @class = "deleteButton" })
@@ -38,4 +33,3 @@
     *@
 }
  </ul>
-</table>

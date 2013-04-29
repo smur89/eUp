@@ -1,0 +1,78 @@
+﻿
+@{
+    ViewBag.Title = "FillTable";
+}
+
+<h2>Form</h2>
+ @section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/Scripts/jquery.validate.unobtrusive.js")
+    @Scripts.Render("~/Scripts/jquery-1.9.1.js")
+    @Scripts.Render("~/Scripts/jquery.validate.js")
+
+}
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <fieldset>
+
+        <legend>UserTable</legend>
+        @Html.Hidden("TableName", (string)ViewBag.TableName);
+        
+
+        @{
+    //Counter to incremenet through Column data Types.
+    int counter = 0;
+         }
+
+         @foreach (string i in ViewBag.Columns)
+         {
+                        //Colum DataTypes as Strings
+             var type = @ViewBag.ColumnTypes[counter++];
+             
+             <label >@i</label>
+
+             //renders text box input based on a type of column
+             //validates inputs using JQuery
+             if (type == "text")
+             {
+               <div class="editor-field">
+                <p>
+                 <input class="text-box single-line" data-val="true"
+                 data-val-length="Maximum length is 20" data-val-length-max="20" 
+                 data-val-required="This field is required." 
+                 id="@i" name="@i" type="text" value=""/>
+                 <span class="field-validation-valid" data-valmsg-for="@i" data-valmsg-replace="true"></span>
+                </p>
+               </div>
+             }
+             else if (type == "float")
+             {
+               <div class="editor-field">
+                <p>
+                 <input class="text-box single-line" data-val="true" 
+                 data-val-number="This field must be a number." data-val-required="This field is required." 
+                 id="@i" name="@i" type="text" value=""/>
+                 <span class="field-validation-valid" data-valmsg-for="@i" data-valmsg-replace="true"></span>
+                </p>
+               </div>
+             }
+             else if (type == "bit")
+             {
+                <span class="field-validation-valid" data-valmsg-for="@i" data-valmsg-replace="true"></span>
+                <p><input type="radio" name="@i" id="@i" value="true" data-val="true" data-val-required="Please choose one of these options:"/>
+                <label for="true">True</label></p>
+                <p><input type="radio" name="@i" id="@i" value="false"/> 
+                <label for="false">False</label></p>
+             }
+         }
+    </fieldset>
+    <p>
+         <input type="submit" value="Submit" />
+    </p>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+

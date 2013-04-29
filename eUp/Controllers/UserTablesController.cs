@@ -459,7 +459,7 @@ namespace eUp.Controllers
             if (colNames.ToArray<string>().Length == 0)
             {
                 chartBool = new Chart(width: 0, height: 0, theme: myTheme).AddSeries(
-                       chartType: "bar",
+                       chartType: "pie",
                        xValue: colNames,
                        yValues: colValues).GetBytes("png");
             }
