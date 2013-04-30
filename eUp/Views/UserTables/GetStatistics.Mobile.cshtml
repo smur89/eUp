@@ -2,7 +2,6 @@
     ViewBag.Title = "Statistics";
 }
 
-<h2>Statistics</h2>
 <div class="chart">
 <img src="@Url.Action("MyChart","UserTables",  new { id=ViewBag.userId, tableId=ViewBag.tableId})" alt="SimpleChart" />
 <img src="@Url.Action("MyChart2","UserTables",  new { id=ViewBag.userId, tableId=ViewBag.tableId})" alt="SimpleChart" />

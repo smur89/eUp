@@ -1,7 +1,9 @@
 ﻿@model System.Data.DataTable 
 @using System.Data; 
 
-<h2>Form Data</h2> 
+@{
+    ViewBag.Title = "My Forms";
+}
 
 @Html.ActionLink("Export", "ExportCSV", new { id = WebSecurity.CurrentUserId, tableId = ViewBag.tableId }, new { @class = "exportCSV" })
 @*@Html.ActionLink("Export", "ExportXML", new { id = WebSecurity.CurrentUserId, tableId = ViewBag.tableId }, new { @class = "exportXML" })*@
