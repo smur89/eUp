@@ -277,7 +277,7 @@ namespace eUp.Controllers
                 for (var i = 3; i < form.Count-1; i++)
                 {
                     //construct a string of values by enclosing them inside ' ' and separating by comas
-                    tValues += "'" + form.Get(i)+"', ";
+                    tValues += "'" + form.Get(i).Replace("'","") +"', ";
                 }
                 //last value added without a coma at the end // otherwise - error
                 tValues += "'"+form.Get(form.Count-1)+"','";

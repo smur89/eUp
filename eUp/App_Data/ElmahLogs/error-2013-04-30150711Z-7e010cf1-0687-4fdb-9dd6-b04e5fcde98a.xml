@@ -1,0 +1,208 @@
+﻿<error errorId="7e010cf1-0687-4fdb-9dd6-b04e5fcde98a" application="/LM/W3SVC/7/ROOT" host="MAGIC-PC" type="System.Data.SqlClient.SqlException" message="Incorrect syntax near 's'.&#xD;&#xA;Unclosed quotation mark after the character string ')'." source=".Net SqlClient Data Provider" detail="System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near 's'.&#xD;&#xA;Unclosed quotation mark after the character string ')'.&#xD;&#xA;   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)&#xD;&#xA;   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)&#xD;&#xA;   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)&#xD;&#xA;   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean&amp; dataReady)&#xD;&#xA;   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout)&#xD;&#xA;   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite)&#xD;&#xA;   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()&#xD;&#xA;   at eUp.Controllers.UserTablesController.FillTable(FormCollection form) in C:\Users\MaGiC\Documents\Visual Studio 2010\Projects\eUp_GIT\eUp\eUp\Controllers\UserTablesController.cs:line 292&#xD;&#xA;   at lambda_method(Closure , ControllerBase , Object[] )&#xD;&#xA;   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)&#xD;&#xA;   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass42.&lt;BeginInvokeSynchronousActionMethod&gt;b__41()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.&lt;&gt;c__DisplayClass8`1.&lt;BeginSynchronous&gt;b__7(IAsyncResult _)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass37.&lt;&gt;c__DisplayClass39.&lt;BeginInvokeActionMethodWithFilters&gt;b__33()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass4f.&lt;InvokeActionMethodFilterAsynchronously&gt;b__49()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass37.&lt;BeginInvokeActionMethodWithFilters&gt;b__36(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass25.&lt;&gt;c__DisplayClass2a.&lt;BeginInvokeAction&gt;b__20()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass25.&lt;BeginInvokeAction&gt;b__22(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Controller.&lt;&gt;c__DisplayClass1d.&lt;BeginExecuteCore&gt;b__18(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.&lt;&gt;c__DisplayClass4.&lt;MakeVoidDelegate&gt;b__3(IAsyncResult ar)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()&#xD;&#xA;   at System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.&lt;&gt;c__DisplayClass4.&lt;MakeVoidDelegate&gt;b__3(IAsyncResult ar)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()&#xD;&#xA;   at System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.&lt;&gt;c__DisplayClass8.&lt;BeginProcessRequest&gt;b__3(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.&lt;&gt;c__DisplayClass4.&lt;MakeVoidDelegate&gt;b__3(IAsyncResult ar)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()&#xD;&#xA;   at System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)&#xD;&#xA;   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()&#xD;&#xA;   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean&amp; completedSynchronously)&#xD;&#xA;ClientConnectionId:27888446-b605-46a1-b785-4e94696eb353" user="magic" time="2013-04-30T15:07:11.3310220Z">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CACHE_CONTROL:max-age=0&#xD;&#xA;HTTP_CONNECTION:keep-alive&#xD;&#xA;HTTP_CONTENT_LENGTH:88&#xD;&#xA;HTTP_CONTENT_TYPE:application/x-www-form-urlencoded&#xD;&#xA;HTTP_ACCEPT:text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8&#xD;&#xA;HTTP_ACCEPT_CHARSET:ISO-8859-1,utf-8;q=0.7,*;q=0.3&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip,deflate,sdch&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:en-US,en;q=0.8&#xD;&#xA;HTTP_COOKIE:__RequestVerificationToken=kGvLi0k2uUs5SvyAeKQ1I9J74-FlkOT3mm5nf2SDJ2qR2ODHoiwEbkNXE0OLIFtHF8eUdGts5Ng0zGY3Xj7IN6R4WZD0L9FG8CAx--4acHAUPaMklOCfZgKBCu_H98v8PJTMYa2M0Xm5RjeHLlPUng2; .ASPXAUTH=CC97CB6E08C5E5C87B5C3BB6A1D6CE013A240EE43CBFB44F94F1B89F4526482185BDD5EC448327B04742551D88D8E875EC8E90B28243A2654F113BCC6A98C753553E33AC8371B13ADD5C26082CEF97E41AB60E92850C47D128850B3B27F78396EB0150083DB6C43A844F2B29EBFB68801834832A44715975F459522DE821CB79&#xD;&#xA;HTTP_HOST:localhost:52919&#xD;&#xA;HTTP_REFERER:http://localhost:52919/UserTables/FillTable/1?tableId=41&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.64 Safari/537.31&#xD;&#xA;HTTP_ORIGIN:http://localhost:52919&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Cache-Control: max-age=0&#xD;&#xA;Connection: keep-alive&#xD;&#xA;Content-Length: 88&#xD;&#xA;Content-Type: application/x-www-form-urlencoded&#xD;&#xA;Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8&#xD;&#xA;Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.3&#xD;&#xA;Accept-Encoding: gzip,deflate,sdch&#xD;&#xA;Accept-Language: en-US,en;q=0.8&#xD;&#xA;Cookie: __RequestVerificationToken=kGvLi0k2uUs5SvyAeKQ1I9J74-FlkOT3mm5nf2SDJ2qR2ODHoiwEbkNXE0OLIFtHF8eUdGts5Ng0zGY3Xj7IN6R4WZD0L9FG8CAx--4acHAUPaMklOCfZgKBCu_H98v8PJTMYa2M0Xm5RjeHLlPUng2; .ASPXAUTH=CC97CB6E08C5E5C87B5C3BB6A1D6CE013A240EE43CBFB44F94F1B89F4526482185BDD5EC448327B04742551D88D8E875EC8E90B28243A2654F113BCC6A98C753553E33AC8371B13ADD5C26082CEF97E41AB60E92850C47D128850B3B27F78396EB0150083DB6C43A844F2B29EBFB68801834832A44715975F459522DE821CB79&#xD;&#xA;Host: localhost:52919&#xD;&#xA;Referer: http://localhost:52919/UserTables/FillTable/1?tableId=41&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.64 Safari/537.31&#xD;&#xA;Origin: http://localhost:52919&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/7/ROOT" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="C:\Users\MaGiC\Documents\Visual Studio 2010\Projects\eUp_GIT\eUp\eUp\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="Forms" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="magic" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="*****" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="magic" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="magic" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="88" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="application/x-www-form-urlencoded" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="off" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="7" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/7" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/UserTables/FillTable/1" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="C:\Users\MaGiC\Documents\Visual Studio 2010\Projects\eUp_GIT\eUp\eUp\UserTables\FillTable\1" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="tableId=41" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="55235" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="POST" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/UserTables/FillTable/1" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="localhost" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="52919" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="0" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/8.0" />
+    </item>
+    <item name="URL">
+      <value string="/UserTables/FillTable/1" />
+    </item>
+    <item name="HTTP_CACHE_CONTROL">
+      <value string="max-age=0" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="keep-alive" />
+    </item>
+    <item name="HTTP_CONTENT_LENGTH">
+      <value string="88" />
+    </item>
+    <item name="HTTP_CONTENT_TYPE">
+      <value string="application/x-www-form-urlencoded" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8" />
+    </item>
+    <item name="HTTP_ACCEPT_CHARSET">
+      <value string="ISO-8859-1,utf-8;q=0.7,*;q=0.3" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip,deflate,sdch" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="en-US,en;q=0.8" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="__RequestVerificationToken=kGvLi0k2uUs5SvyAeKQ1I9J74-FlkOT3mm5nf2SDJ2qR2ODHoiwEbkNXE0OLIFtHF8eUdGts5Ng0zGY3Xj7IN6R4WZD0L9FG8CAx--4acHAUPaMklOCfZgKBCu_H98v8PJTMYa2M0Xm5RjeHLlPUng2; .ASPXAUTH=CC97CB6E08C5E5C87B5C3BB6A1D6CE013A240EE43CBFB44F94F1B89F4526482185BDD5EC448327B04742551D88D8E875EC8E90B28243A2654F113BCC6A98C753553E33AC8371B13ADD5C26082CEF97E41AB60E92850C47D128850B3B27F78396EB0150083DB6C43A844F2B29EBFB68801834832A44715975F459522DE821CB79" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="localhost:52919" />
+    </item>
+    <item name="HTTP_REFERER">
+      <value string="http://localhost:52919/UserTables/FillTable/1?tableId=41" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.64 Safari/537.31" />
+    </item>
+    <item name="HTTP_ORIGIN">
+      <value string="http://localhost:52919" />
+    </item>
+  </serverVariables>
+  <queryString>
+    <item name="tableId">
+      <value string="41" />
+    </item>
+  </queryString>
+  <form>
+    <item name="TableName">
+      <value string="UserTable_1_41" />
+    </item>
+    <item name="UId">
+      <value string="1" />
+    </item>
+    <item name="TId">
+      <value string="41" />
+    </item>
+    <item name="name">
+      <value string="adam's" />
+    </item>
+    <item name="Age">
+      <value string="32" />
+    </item>
+    <item name="testTrue1">
+      <value string="true" />
+    </item>
+    <item name="testTrue2">
+      <value string="true" />
+    </item>
+  </form>
+  <cookies>
+    <item name="__RequestVerificationToken">
+      <value string="kGvLi0k2uUs5SvyAeKQ1I9J74-FlkOT3mm5nf2SDJ2qR2ODHoiwEbkNXE0OLIFtHF8eUdGts5Ng0zGY3Xj7IN6R4WZD0L9FG8CAx--4acHAUPaMklOCfZgKBCu_H98v8PJTMYa2M0Xm5RjeHLlPUng2" />
+    </item>
+    <item name=".ASPXAUTH">
+      <value string="CC97CB6E08C5E5C87B5C3BB6A1D6CE013A240EE43CBFB44F94F1B89F4526482185BDD5EC448327B04742551D88D8E875EC8E90B28243A2654F113BCC6A98C753553E33AC8371B13ADD5C26082CEF97E41AB60E92850C47D128850B3B27F78396EB0150083DB6C43A844F2B29EBFB68801834832A44715975F459522DE821CB79" />
+    </item>
+  </cookies>
+</error>
