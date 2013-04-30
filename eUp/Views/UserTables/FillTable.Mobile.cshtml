@@ -38,7 +38,7 @@
              {
                <div class="editor-field">
                 <p>
-                 <input class="text-box single-line" data-val="true"
+                 <input class="text-box single-line" data-theme="c" data-val="true"
                  data-val-length="Maximum length is 20" data-val-length-max="20" 
                  data-val-required="This field is required." 
                  id="@i" name="@i" type="text" value=""/>
@@ -50,7 +50,7 @@
              {
                <div class="editor-field">
                 <p>
-                 <input class="text-box single-line" data-val="true" 
+                 <input class="text-box single-line" data-theme="c" data-val="true" 
                  data-val-number="This field must be a number." data-val-required="This field is required." 
                  id="@i" name="@i" type="text" value=""/>
                  <span class="field-validation-valid" data-valmsg-for="@i" data-valmsg-replace="true"></span>
@@ -59,11 +59,15 @@
              }
              else if (type == "bit")
              {
-                <span class="field-validation-valid" data-valmsg-for="@i" data-valmsg-replace="true"></span>
-                <p><input type="radio" name="@i" id="@i" value="true" data-val="true" data-val-required="Please choose one of these options:"/>
-                <label for="true">True</label></p>
-                <p><input type="radio" name="@i" id="@i" value="false"/> 
-                <label for="false">False</label></p>
+                 <fieldset data-role="controlgroup" data-type="vertical" data-mini="true">
+                 <legend></legend>
+                <input id="r1" name="@i" value="true" data-theme="b" type="radio" checked="checked">
+                <label for="r1">True</label>
+                <input id="r2" name="@i" value="false" data-theme="b" type="radio">
+                <label for="r2">False</label>
+                </fieldset>
+
+             <span class="field-validation-valid" data-valmsg-for="@i" data-valmsg-replace="true"></span>
              }
          }
     </fieldset>

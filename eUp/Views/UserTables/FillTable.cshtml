@@ -21,8 +21,6 @@
         @Html.Hidden("UId", (int)ViewBag.uId)
         @Html.Hidden("TId", (int)ViewBag.tId)
 
-        
-
         @{
     //Counter to incremenet through Column data Types.
     int counter = 0;
@@ -62,11 +60,12 @@
              }
              else if (type == "bit")
              {
-                <span class="field-validation-valid" data-valmsg-for="@i" data-valmsg-replace="true"></span>
-                <p><input type="radio" name="@i" id="@i" value="true" data-val="true" data-val-required="Please choose one of these options:"/>
-                <label for="true">True</label></p>
-                <p><input type="radio" name="@i" id="@i" value="false"/> 
-                <label for="false">False</label></p>
+              <div class="radioBut">
+                <p><label for="true">True</label><input type="radio" name="@i" id="@i" value="true" data-val="true" data-val-required="Please choose one of these options:"/></p>
+              
+                <p><label for="false">False</label><input type="radio" name="@i" id="@i" value="false"/></p>
+                 </div>
+             <span class="field-validation-valid" data-valmsg-for="@i" data-valmsg-replace="true"></span>
              }
          }
     </fieldset>

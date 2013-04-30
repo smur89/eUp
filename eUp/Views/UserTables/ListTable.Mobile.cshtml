@@ -4,14 +4,24 @@
     ViewBag.Title = "My Forms";
 }
 
- <ul data-role="listview" data-inset="true">
 @foreach (var item in Model) {
-    <li>
-     
-        @Html.ActionLink(item.TableName, "TableData", new { id = item.UserId, tableId = item.UserTableId })
-        @Html.ActionLink("Statistics", "GetStatistics", new { id = item.UserId, tableId = item.UserTableId })
-        @Html.ActionLink("User View", "FillTable", new { id = item.UserId, tableId = item.UserTableId })
-    </li>
-    
+    <div data-role="collapsible-set">
+            <div data-role="collapsible">
+                <h3>
+                    @item.TableName
+                </h3>
+                <ul data-role="listview" data-theme="c" data-inset="true">
+                <li>
+                @Html.ActionLink("Data" , "TableData", new { id = item.UserId, tableId = item.UserTableId })
+                </li>
+                 <li>
+                 @Html.ActionLink("Statistics", "GetStatistics", new { id = item.UserId, tableId = item.UserTableId })
+                </li>
+                 <li>
+                 @Html.ActionLink("User View", "FillTable", new { id = item.UserId, tableId = item.UserTableId })
+                </li>
+              </ul>
+            </div>
+        </div>  
 }
- </ul>
+

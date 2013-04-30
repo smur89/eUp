@@ -266,6 +266,18 @@ ul#menu li.red a
 
 /* page elements
 ----------------------------------------------------------*/
+.radioBut
+{
+    display:inline-block;
+    text-align:center;
+    width:auto;
+}
+.radioBut p
+{
+    float:left;
+    left:0px;
+}
+
 .chart
 {
     display:block;
