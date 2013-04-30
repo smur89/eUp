@@ -123,7 +123,7 @@ namespace eUp.Controllers
 
         //takes 2 parameters, user id and table id and creates a user form with unique name and user defined fields
         //
-        public ViewResult SaveTable(int id, int tableId)
+        public ActionResult SaveTable(int id, int tableId)
         {
             //collection of user defined fields
             ICollection<Field> tableFields = context.Fields.Where(x => x.UserTableId == tableId).ToList();
@@ -208,7 +208,8 @@ namespace eUp.Controllers
                 //return View();
             }
             //pass collection of user defined fields to a View
-            return View(tableFields);
+            //return View(tableFields);
+            return RedirectToAction("ListTable");
         }
 
         [AllowAnonymous]
@@ -249,6 +250,8 @@ namespace eUp.Controllers
             ViewBag.Columns = colNames;
             ViewBag.ColumnTypes = colTypes;
             ViewBag.TableName = ("UserTable_" + id + "_" + tableId);
+            ViewBag.uId = id;
+            ViewBag.tId = tableId;
             return View();
         }
 
@@ -271,7 +274,7 @@ namespace eUp.Controllers
                 //loops through FormCollection to get values to be inserted
                 //index starts with 1 - value at index 0 is Table Name
                 //goes up to number of values in collection -1 // last value is added outside a loop to avoid adding a coma after last value
-                for (var i = 1; i < form.Count-1; i++)
+                for (var i = 3; i < form.Count-1; i++)
                 {
                     //construct a string of values by enclosing them inside ' ' and separating by comas
                     tValues += "'" + form.Get(i)+"', ";
@@ -280,12 +283,15 @@ namespace eUp.Controllers
                 tValues += "'"+form.Get(form.Count-1)+"','";
                 //retreives name of a table
                 string tName = form.Get("TableName");
+                int uid = Convert.ToInt32(form.Get("UId"));
+                int tid = Convert.ToInt32(form.Get("TId"));
                 string date = System.DateTime.Now.ToString();
                 tValues += date + "'";
                 //Submit values to SQL table using table name and constructed string of values
                 cmd = new SqlCommand("INSERT INTO " + tName + " VALUES ("+ tValues + ")", con);
                 cmd.ExecuteNonQuery();
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+                return RedirectToAction("FillTable", new { id = uid, tableId = tid});
         }
 
         //returns all user form data
@@ -436,9 +442,9 @@ namespace eUp.Controllers
                     {
                         string s = col.ColumnName;
                         colNames.Add(s + " True");
-                        colValues.Add((int)dt.Compute("COUNT(" + s + ")", s+" = true"));
+                        colValues.Add(Convert.ToInt32(dt.Compute("COUNT(" + s + ")", s+" = true")));
                         colNames.Add(s + " False");
-                        colValues.Add((int)dt.Compute("COUNT(" + s + ")", s+" = false"));
+                        colValues.Add(Convert.ToInt32(dt.Compute("COUNT(" + s + ")", s + " = false")));
                     }
                 }
             }

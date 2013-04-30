@@ -1,9 +1,8 @@
 ﻿
 @{
-    ViewBag.Title = "FillTable";
+    ViewBag.Title = "Form";
 }
 
-<h2>Form</h2>
  @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/Scripts/jquery.validate.unobtrusive.js")
@@ -16,8 +15,9 @@
     @Html.ValidationSummary(true)
     <fieldset>
 
-        <legend>UserTable</legend>
-        @Html.Hidden("TableName", (string)ViewBag.TableName);
+        @Html.Hidden("TableName", (string)ViewBag.TableName)
+        @Html.Hidden("UId", (int)ViewBag.uId)
+        @Html.Hidden("TId", (int)ViewBag.tId)
         
 
         @{
