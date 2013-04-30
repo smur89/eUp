@@ -54,6 +54,7 @@ namespace eUp.Controllers
         {
             if (ModelState.IsValid)
             {
+                field.FieldName = field.FieldName.Replace(" ", "_");
                 //add a field to a database and save it
                 context.Fields.Add(field);
                 context.SaveChanges();

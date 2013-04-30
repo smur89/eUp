@@ -511,6 +511,7 @@ namespace eUp.Controllers
                 int id = (int)user.ProviderUserKey;
                 //assign user id to a form user id
                 table.UserId = id;
+                //table.TableName = table.TableName.Replace(" ", "_");
                 context.UserTables.Add(table);
                 context.SaveChanges();
                 //assign form id to a variable
